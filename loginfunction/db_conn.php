@@ -1,13 +1,14 @@
 <?php
 
-$sname="localhost";
-$uname="root";
-$password="";
+/*
+$localhost = "localhost";
+$username = "proadmin38";
+$password = "proadmin38";
+$database = "proonebadmintoncentre"; 
+*/
 
-$db_name="test_db"; //change the database name
-
-$conn=mysqli_connect($sname,$uname,$password,$db_name);
+$conn=mysqli_connect("localhost","proadmin38","proadmin38","proonebadmintoncentre");
 
 if(!$conn){
-    echo "Connection failed!";
+    die("Connection failed: " . mysqli_connect_error());
 }
