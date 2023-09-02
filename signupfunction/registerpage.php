@@ -44,7 +44,7 @@
           <label>Re Password</label>
           <input type="password" name="re_password"  placeholder="Re_Password"><br>
 
-     	<button type="submit">Sign Up</button>
+     	<button type="submit" name="register" value="register">Sign Up</button>
           <a href="index.php" class="ca">Already have an account?</a>
      </form>
 </body>

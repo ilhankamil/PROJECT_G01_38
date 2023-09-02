@@ -1,15 +1,24 @@
 <?php
+session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-session_start();
+// Include the PHPMailer autoloader
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+require 'PHPMailer-master/src/Exception.php';
 
 // Set the default value for userType to 'customer'
 $userType = 'customer';
 
 // Set the default value for Verified_email to pending
-//$verified_email = 'pending';
+$verified_email = 'pending';
+
+//Send verification code
+$verification_code = generateVerificationCode();
+
+    
 
 if (isset($_POST['uname']) && isset($_POST['password'])  && isset($_POST['email']) && isset($_POST['re_password'])) {
 
@@ -48,12 +57,48 @@ else if($pass !== $re_pass){
     exit();
 }
 else{
+ //Instantiation and passing `true` enables exceptions
+ $mail = new PHPMailer(true);
+
+ try {
+     // SMTP server settings for Gmail
+     $mail->SMTPDebug = 0;//SMTP::DEBUG_SERVER; //Enable verbose debug output
+     //Send using SMTP
+     $mail->isSMTP();
+     $mail->Host = 'smtp.gmail.com';
+     $mail->SMTPAuth = true;
+     $mail->Username = 'proonebcadm1n@gmail.com'; // Your Gmail email address
+     $mail->Password = 'lkihubdgfynutkyw';  // Your Gmail password
+     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+     $mail->Port = 587; //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+                        //For Gmail, should use port 587 with TLS encryption.
+    
+     // Sender information
+     $mail->setFrom('proonebcadm1n@gmail.com', 'ProOneAdmin'); // Replace with your name and Gmail address
+
+    //Add a recipient
+    $mail->addAddress($email, $uname);
+
+    // Email content
+     $mail->isHTML(true);
+     $mail->Subject = 'Email verification';
+     $mail->Body    = '<p>Your verification code is: <b style="font-size: 30px;">' .$verification_code. '</b></p>';
+
+     //send email
+     $mail->send();
+     echo 'Email sent successfully!';
+
+ }catch (Exception $e) {
+    echo 'Email could not be sent. Error: ', $mail->ErrorInfo;
+ }
+
+
     $conn=mysqli_connect("localhost","proadmin38","proadmin38","proonebadmintoncentre");
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }else{
         //hashing password
-        $pass = md5($pass);
+        $pass = password_hash($pass, PASSWORD_DEFAULT);
 
         // Check if username is been taken
         $sql = "SELECT * FROM user WHERE username='$uname' ";
@@ -75,21 +120,18 @@ else{
 
         // Insert customer data into the 'customer' table
         $sql = "INSERT INTO customer (username, email, password) VALUES ('$uname', '$email', '$pass')";
-        $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql); 
 
         if ($result) {
 
             // Insert user data into the 'user' table
-            $sql = "INSERT INTO user (username, email, password, userType, Verified_email) VALUES ('$uname', '$email', '$pass', '$userType', '$verified_email')";
+            $sql = "INSERT INTO user (username, email, password, userType, verification_code, verified_email) VALUES ('$uname', '$email', '$pass', '$userType', '$verification_code', '$verified_email')";
             $result = mysqli_query($conn, $sql);
         
             if ($result) {
                 header("Location: registerpage.php?success=Your account has been created successfully");
                 exit();
-            } else {
-                header("Location: registerpage.php?error=Unknown error occurred");
-                exit();
-            }
+            } 
         } else {
             header("Location: registerpage.php?error=Unknown error occurred");
             exit();
@@ -102,81 +144,23 @@ else{
 }
 
 
+    /*
 
+     header("Location: email-verification.php?email=" . $email);
+     exit();
+     }
+     */
+?>
 
-
-
-
-// when user clicked register, it system will send verification through google email
-if (isset($_POST["submit"]))
-{
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-    //Instantiation and passing `true` enables exceptions
-    $mail = new PHPMailer(true);
-
-    try {
-        //Enable verbose debug output
-        $mail->SMTPDebug = 0;//SMTP::DEBUG_SERVER;
-
-        //Send using SMTP
-        $mail->isSMTP();
-
-        //Set the SMTP server to send through
-        $mail->Host = 'smtp.gmail.com';
-
-        //Enable SMTP authentication
-        $mail->SMTPAuth = true;
-
-        //SMTP username
-        $mail->Username = 'proonebcadm1n@gmail.com';
-
-        //SMTP password
-        $mail->Password = 'proone123';
-
-        //Enable TLS encryption;
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-
-        //TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
-        $mail->Port = 587;
-
-        //Recipients
-        $mail->setFrom('proonebcadm1n@gmail.com', 'ProOneBadmintonAdmin');
-
-        //Add a recipient
-        $mail->addAddress($email, $name);
-
-        //Set email format to HTML
-        $mail->isHTML(true);
-
-        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
-
-        $mail->Subject = 'Email verification';
-        $mail->Body    = '<p>Your verification code is: <b style="font-size: 30px;">' . $verification_code . '</b></p>';
-
-        $mail->send();
-        // echo 'Message has been sent';
-
-        // connect with database
-        $conn=mysqli_connect("localhost","proadmin38","proadmin38","proonebadmintoncentre");
-        // Check for database connection errors
-        if (!$conn) {
-            throw new Exception("Database connection failed: " . mysqli_connect_error());
-        }
-        // insert in users table
-        $sql = "INSERT INTO user (verification_code) VALUES ('" . $verification_code . "')";
-        mysqli_query($conn, $sql);
-
-        mysqli_close($conn);
-
-        header("Location: email-verification.php?email=" . $email);
-        exit();
-    } 
-    catch (Exception $e) {
-        echo "Message could not be sent and/or database operation failed: " . $e->getMessage();
+<?php
+function generateVerificationCode($length = 6) {
+    $characters = '0123456789'; // Only digits
+    $code = '';
+    for ($i = 0; $i < $length; $i++) {
+        $code .= $characters[rand(0, strlen($characters) - 1)];
     }
+    return $code;
 }
+
 ?>
 
