@@ -32,9 +32,7 @@ if (isset($_POST["verify_email"])) {
             echo "<p>Error updating email verification status.</p>";
         }
     } else {
-        echo 'error';
-        print_r($_SESSION);
-       // header("location:emailverifypage.php?error=Verification code failed");
+        header("location:emailverifypage.php?error=Verification code failed");
     }
 }
 
