@@ -35,11 +35,13 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 
 				// Verify the password
 				if (password_verify($pass, $row['password'])) {
+
+					// Store the email in the session
+                    $_SESSION['uname_or_email'] = $row['email']; //can use to pass the value into emailverifypage
 					
 					//$_SESSION['user_name'] = $row['user_name']; //these 3 $_session can user to store value and pass on to another page
             		//$_SESSION['name'] = $row['name'];
             		//$_SESSION['id'] = $row['id'];
-
 
 
 					// Check if the user's email is verified and not in a "pending" state
@@ -47,9 +49,27 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 					die("Please verify your email <a href='emailverifypage.php?email=" . $row['email'] . "'>from here</a>");
 				}elseif($row['verified_email'] == "verified"){
 
-					//When Password is correct and email is verified, redirect to home
-					header("Location: passed.php");
-					exit();
+					$userType=$row['userType'];
+					
+						if($userType == "customer"){
+							
+							header("Location: customer.php");
+							exit();
+						}
+						elseif($userType == "staff"){
+							
+							header("Location: staff.php");
+							exit();
+						}
+						elseif($userType == "admin"){
+							
+							header("Location: admin.php");
+							exit();
+						}
+						else{
+							echo 'error';
+						}
+					
 					}
 					else{
 						header("Location: index.php?error=Verification error");
@@ -79,6 +99,9 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 				// Verify the password
 				if (password_verify($pass, $row['password'])) {
 
+					// Store the username in the session
+                    $_SESSION['uname_or_email'] = $row['username']; //can use to pass the value into emailverifypage
+
 					//$_SESSION['user_name'] = $row['user_name']; //these 3 $_session can user to store value and pass on to another page
             		//$_SESSION['name'] = $row['name'];
             		//$_SESSION['id'] = $row['id'];
@@ -90,9 +113,27 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 				}
 				elseif($row['verified_email'] == "verified"){
 
-				//When Password is correct and email is verified, redirect to home
-				header("Location: passed.php");
-				exit();
+					$userType=$row['userType'];
+					
+					if($userType == "customer"){
+						
+						header("Location: customer.php");
+						exit();
+					}
+					elseif($userType == "staff"){
+						
+						header("Location: staff.php");
+						exit();
+					}
+					elseif($userType == "admin"){
+						
+						header("Location: admin.php");
+						exit();
+					}
+					else{
+						echo 'error';
+					}
+
 				}
 				else{
 					header("Location: index.php?error=Verification error");
