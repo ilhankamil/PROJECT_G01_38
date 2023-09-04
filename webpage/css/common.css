@@ -1,0 +1,38 @@
+:root{
+    --teal: #2EC1AC;
+    --teal_hover: #279e8c
+}
+
+*{
+    font-family: 'Nunito', sans-serif;
+}
+.h-font{
+    font-family: 'Merienda', cursive;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+ margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+.custom-bg{
+    background-color: #2EC1AC;
+    border: 1px solid #2EC1AC;
+}
+
+.custom-bg:hover{
+    background-color: #279e8c;
+    border-color: #279e8c;
+}
+
+.h-line{
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
