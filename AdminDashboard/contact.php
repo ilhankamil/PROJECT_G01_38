@@ -194,57 +194,60 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                   <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">User Management</h1>
-                    <p class="mb-4">To manage existing users within the database. <a target="_blank"
-                            href="https://datatables.net">User Management</a>.</p>
-
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">User Management</h6>
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Contact Us Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Contact Pro Badminton Centre</h6>
+                </div>
+                <div class="card-body">
+                    <p>If you need to get in touch with us, please use the following contact information:</p>
+                    <ul>
+                        <li><strong>Email:</strong> contact@probadmintoncentre.com</li>
+                        <li><strong>Phone:</strong> +1 (123) 456-7890</li>
+                        <li><strong>Address:</strong> 123 Main Street, City, Country</li>
+                    </ul>
+                    <p>Alternatively, you can use the contact form below to send us a message:</p>
+                    
+                    <!-- Contact Form -->
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name">
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <!-- End Contact Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Contact Us Section -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages -->
+    <script src="js/sb-admin-2.min.js"></script>
+</div>
+<!-- /.container-fluid -->
+
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

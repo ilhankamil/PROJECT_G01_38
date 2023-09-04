@@ -196,55 +196,31 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+    <!-- About Us Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">About Pro Badminton Centre Admin Page</h6>
+                </div>
+                <div class="card-body">
+                    <p>Welcome to the Pro Badminton Centre Admin Dashboard. This page is designed to help you manage various aspects of the Pro Badminton Centre website. You can access different components and utilities from the sidebar menu on the left.</p>
+                    <p>Here are some key features and functionalities available in this admin dashboard:</p>
+                    <ul>
+                        <li><strong>Dashboard:</strong> View an overview of important statistics and data related to the Pro Badminton Centre.</li>
+                        <li><strong>Components:</strong> Access custom components like buttons and cards to enhance the website's user interface.</li>
+                        <li><strong>Utilities:</strong> Manage other important pages such as Contact Us and About Us.</li>
+                        <li><strong>Profile:</strong> View and edit your admin profile.</li>
+                    </ul>
+                    <p>Feel free to explore and use the tools provided to efficiently manage the Pro Badminton Centre website. If you have any questions or need assistance, please don't hesitate to reach out.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About Us Section -->
 
-                   <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">User Management</h1>
-                    <p class="mb-4">To manage existing users within the database. <a target="_blank"
-                            href="https://datatables.net">User Management</a>.</p>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">User Management</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
