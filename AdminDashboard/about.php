@@ -196,27 +196,26 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-    <!-- About Us Section -->
- <!-- About Us Section -->
+<!-- About Us Section -->
 <div class="row">
     <div class="col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Edit About Us Content</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edit About Us</h6>
             </div>
             <div class="card-body">
-<form method="POST" action="update.php">
-    <label for="newContent">New Content:</label><br>
-    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
-    <input type="submit" value="Save Changes">
-</form>
+                <!-- Include the form from edit.php here -->
+                <form method="POST" action="update.php">
+                    <label for="newContent">New Content:</label><br>
+                    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
+                    <input type="submit" value="Save Changes">
+                </form>
+            </div>
         </div>
     </div>
 </div>
 <!-- End About Us Section -->
 
-
-    <!-- End About Us Section -->
 
 
 
