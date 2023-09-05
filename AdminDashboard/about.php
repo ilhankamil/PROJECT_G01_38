@@ -197,26 +197,25 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
     <!-- About Us Section -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">About Pro Badminton Centre Admin Page</h6>
-                </div>
-                <div class="card-body">
-                    <p>Welcome to the Pro Badminton Centre Admin Dashboard. This page is designed to help you manage various aspects of the Pro Badminton Centre website. You can access different components and utilities from the sidebar menu on the left.</p>
-                    <p>Here are some key features and functionalities available in this admin dashboard:</p>
-                    <ul>
-                        <li><strong>Dashboard:</strong> View an overview of important statistics and data related to the Pro Badminton Centre.</li>
-                        <li><strong>Components:</strong> Access custom components like buttons and cards to enhance the website's user interface.</li>
-                        <li><strong>Utilities:</strong> Manage other important pages such as Contact Us and About Us.</li>
-                        <li><strong>Profile:</strong> View and edit your admin profile.</li>
-                    </ul>
-                    <p>Feel free to explore and use the tools provided to efficiently manage the Pro Badminton Centre website. If you have any questions or need assistance, please don't hesitate to reach out.</p>
-                </div>
+ <!-- About Us Section -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Edit About Us Content</h6>
             </div>
+            <div class="card-body">
+<form method="POST" action="update.php">
+    <label for="newContent">New Content:</label><br>
+    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
+    <input type="submit" value="Save Changes">
+</form>
         </div>
     </div>
+</div>
+<!-- End About Us Section -->
+
+
     <!-- End About Us Section -->
 
 
