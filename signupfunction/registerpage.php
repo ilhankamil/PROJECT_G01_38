@@ -5,14 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<?php
-	/*
-	if (isset($_POST["register"]))
-	{
-		$password = $_POST["password"];
-	$encrypted_password = password_hash($password, PASSWORD_DEFAULT);
-	}*/
-	?>
      <form action="register.php" method="post">
      	<h2>SIGN UP</h2>
      	<?php if (isset($_GET['error'])) { ?>

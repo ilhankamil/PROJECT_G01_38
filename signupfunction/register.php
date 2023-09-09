@@ -20,7 +20,8 @@ $verification_code = generateVerificationCode();
 
     
 
-if (isset($_POST['uname']) && isset($_POST['password'])  && isset($_POST['email']) && isset($_POST['re_password'])) {
+if (isset($_POST['uname']) && isset($_POST['email'])  && isset($_POST['phonenumber'])  && isset($_POST['passwordR']) && isset($_POST['confirm_password'])) {
+
 
 	function validate($data){
        $data = trim($data);
@@ -31,12 +32,13 @@ if (isset($_POST['uname']) && isset($_POST['password'])  && isset($_POST['email'
 
 	$uname = validate($_POST['uname']);
     $email = validate($_POST['email']);
-	$pass = validate($_POST['password']);
-	$re_pass = validate($_POST['re_password']);
+    $phonenumber = ($_POST['phonenumber']);
+	$pass = validate($_POST['passwordR']);
+	$re_pass = validate($_POST['confirm_password']);
 
 	$user_data = 'uname='. $uname;
-
-if (empty($uname)) {
+/*
+ if (empty($uname)) {
     header("Location: registerpage.php?error=Username is required&$user_data");
     exit();
 }
@@ -49,7 +51,7 @@ else if(empty($pass)){
     exit();
 }
 else if(empty($re_pass)){
-    header("Location: registerpage.php?error=Re Password is required&$user_data");
+    header("Location: registerpage.php?error=Confirm password is required&$user_data");
     exit();
 }
 else if($pass !== $re_pass){
@@ -57,7 +59,10 @@ else if($pass !== $re_pass){
     exit();
 }
 else{
- //Instantiation and passing `true` enables exceptions
+ 
+    } */
+
+    //Instantiation and passing `true` enables exceptions
  $mail = new PHPMailer(true);
 
  try {
@@ -119,13 +124,13 @@ else{
         }
 
         // Insert customer data into the 'customer' table
-        $sql = "INSERT INTO customer (username, email, password) VALUES ('$uname', '$email', '$pass')";
+    //    $sql = "INSERT INTO customer (username, email, phonenumber, password) VALUES ('$uname', '$email','$phonenumber', '$pass')";
         $result = mysqli_query($conn, $sql); 
 
         if ($result) {
 
             // Insert user data into the 'user' table
-            $sql = "INSERT INTO user (username, email, password, userType, verification_code, verified_email) VALUES ('$uname', '$email', '$pass', '$userType', '$verification_code', '$verified_email')";
+            $sql = "INSERT INTO user (username, email, password, phonenumber, userType, verification_code, verified_email) VALUES ('$uname', '$email', '$pass', '$phonenumber', '$userType', '$verification_code', '$verified_email')";
             $result = mysqli_query($conn, $sql);
         
             if ($result) {
@@ -137,9 +142,9 @@ else{
             exit();
             }
         }
-    } 
 }else{
-	header("Location: registerpage.php");
+    print_r($_POST);
+	//header("Location: registerpage.php");
 	exit();
 }
 
