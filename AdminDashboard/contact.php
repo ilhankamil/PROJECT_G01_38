@@ -176,6 +176,7 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
+                                
          <!-- Add "View Profile" button -->
         <a class="dropdown-item" href="profile.php">
             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -196,38 +197,34 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+                  <!-- Profile Modal -->
+<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileModalLabel">View Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
     <!-- Contact Us Section -->
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Contact Pro Badminton Centre</h6>
-                </div>
-                <div class="card-body">
-                    <p>If you need to get in touch with us, please use the following contact information:</p>
-                    <ul>
-                        <li><strong>Email:</strong> contact@probadmintoncentre.com</li>
-                        <li><strong>Phone:</strong> +1 (123) 456-7890</li>
-                        <li><strong>Address:</strong> 123 Main Street, City, Country</li>
-                    </ul>
-                    <p>Alternatively, you can use the contact form below to send us a message:</p>
-                    
-                    <!-- Contact Form -->
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Edit Contact Us</h6>
+            </div>
+            <div class="card-body">
+                <!-- Include the form from edit.php here -->
+                <form method="POST" action="update_contact.php">
+                    <label for="newContent">New Content:</label><br>
+                    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
+                    <input type="submit" value="Save Changes">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
                     <!-- End Contact Form -->
                 </div>
             </div>
