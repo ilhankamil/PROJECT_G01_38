@@ -90,6 +90,7 @@
                         <button type="submit" class="btn btn-dark shadow-none">REGISTER</button>
                         </div>
                     </div>
+                    
             </form>
         </div>
     </div>
