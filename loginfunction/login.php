@@ -156,7 +156,7 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 		
 	}
 }else{
-	header("Location: index.php");
+	header("Location: ../webpage/index.php");
 }
 
 ?>
