@@ -48,4 +48,6 @@ if ($mysqli->affected_rows) {
 
 }
 
-echo "Message sent, please check your inbox."; //add success page 
+echo "Message sent, please check your inbox."; 
+header("refresh:3;url=../webpage/index.php");
+?>
