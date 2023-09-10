@@ -23,7 +23,7 @@ if (isset($_POST["verify_email"])) {
             ?>
             <script>
                 setTimeout(function() {
-                    window.location.href = 'index.php';
+                    window.location.href = '../webpage/index.php';
                 }, 2000); // 2000 milliseconds (2 seconds) delay
             </script>
             <?php
