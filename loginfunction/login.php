@@ -47,7 +47,7 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
                         } elseif ($userType == "staff") {
                             $response['redirect'] = "staff.php"; // Set the redirect URL in the response
                         } elseif ($userType == "admin") {
-                            $response['redirect'] = "admin.php"; // Set the redirect URL in the response
+                            $response['redirect'] = "../AdminDashboard/index.php"; // Set the redirect URL in the response
                         } else {
                             $response['error'] = "Unknown user type"; // Set an error message in the response
                         }
@@ -85,7 +85,7 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
                         } elseif ($userType == "staff") {
                             $response['redirect'] = "staff.php"; // Set the redirect URL in the response
                         } elseif ($userType == "admin") {
-                            $response['redirect'] = "admin.php"; // Set the redirect URL in the response
+                            $response['redirect'] = "../AdminDashboard/index.php"; // Set the redirect URL in the response
                         } else {
                             $response['error'] = "Unknown user type"; // Set an error message in the response
                         }
