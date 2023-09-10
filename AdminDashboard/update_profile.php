@@ -27,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Connect to the database (modify this according to your database setup)
-    $servername = "your_servername";
-    $username = "your_username";
-    $password = "your_password";
-    $dbname = "your_database";
+    $servername = "localhost";
+    $username = "proadmin38";
+    $password = "proadmin38";
+    $dbname = "proonebadmintoncentre";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
