@@ -42,6 +42,7 @@
     <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+
             <form action="../signupfunction/register.php" method="post"> 
                 <div class="modal-header">
                     <h5 class="modal-title d-flex align-items-center">
@@ -86,6 +87,20 @@
                                     </div>
                                 </div>
                             </div>
+                             <!-- Error messages will be displayed here -->
+                             <div id="error-messages" class="text-danger"></div>
+                            <!-- Success message container -->
+                             <div id="success-message" class="text-success"></div>
+
+                              <!-- Loading indicator -->
+                            <div id="loading-indicator" style="display: none;">
+                            <!-- You can use any loading animation or message you prefer -->
+                            <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p>Please wait, registering...</p>
+                            </div>
+                            
                         <div class="text-center my-1">
                         <button type="submit" class="btn btn-dark shadow-none">REGISTER</button>
                         </div>
@@ -109,13 +124,17 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label">Email address</label>
+                        <label class="form-label">Username or Email address</label>
                         <input type="text" class="form-control shadow-none" name="uname_or_email"> <!--  email input -->
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Password</label>
                         <input type="password" class="form-control shadow-none" name="password"> <!--  password input -->
                     </div>
+
+                   <!-- Error messages will be displayed here -->
+                   <div id="error-messagesLogin" class="text-danger"></div>
+
                     <div>
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <button type="submit" class="btn btn-dark shadow-none">LOGIN</button>
@@ -127,3 +146,108 @@
         </div>
     </div>
 </div>
+
+<!-- Handling registerModal -->
+<script>
+    function displayMessage(message, isError) {
+        const messageContainer = isError ? document.getElementById("error-messages") : document.getElementById("success-message");
+        messageContainer.innerHTML = message;
+        if (isError) {
+            messageContainer.classList.remove("text-success");
+        } else {
+            messageContainer.classList.add("text-success");
+        }
+    }
+
+    function toggleLoadingIndicator(show) {
+        const loadingIndicator = document.getElementById("loading-indicator");
+        if (show) {
+            loadingIndicator.style.display = "block";
+        } else {
+            loadingIndicator.style.display = "none";
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("#registerModal form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Show the loading indicator when the form is submitted
+            toggleLoadingIndicator(true);
+
+            // Serialize form data
+            const formData = new FormData(form);
+
+            // Send a POST request to your PHP script
+            fetch("../signupfunction/register.php", {
+                method: "POST",
+                body: formData,
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // Hide the loading indicator when the response is received
+                    toggleLoadingIndicator(false);
+
+                    if (data.error) {
+                        displayMessage(data.error, true);
+                    } else if (data.success) {
+                        // Registration was successful
+                        displayMessage(data.success, false); // Display the success message
+                        // Redirect to index.php after a delay
+                        setTimeout(function () {
+                            window.location.href = "../webpage/index.php";
+                        }, 3000); // 3000 milliseconds (3 seconds) delay
+                    }
+                })
+                .catch((error) => {
+                    // Hide the loading indicator in case of an error
+                    toggleLoadingIndicator(false);
+                    console.error("Error:", error);
+                });
+        });
+    });
+</script>
+
+<!-- Handling loginModal -->
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $("form").on("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Serialize the form data
+        var formData = $(this).serialize();
+
+        // Send an AJAX request to your PHP script
+        $.ajax({
+            type: "POST",
+            url: "../loginfunction/login.php",
+            data: formData,
+            dataType: "json", // Expect JSON response
+            success: function (response) {
+                if (response.error) {
+                    // Display the error message in the error-messagesLogin div
+                    $("#error-messagesLogin").html(response.error);
+                } else if (response.redirect) {
+                    // Redirect the user to the specified URL on successful login
+                    window.location.href = response.redirect;
+                }
+            },
+            error: function () {
+                // Handle AJAX errors, if any
+                $("#error-messagesLogin").html("An error occurred during login.");
+            }
+        });
+    });
+});
+</script>
+
+<style>
+    .text-success {
+        color: green;
+    }
+</style>
