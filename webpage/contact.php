@@ -10,18 +10,32 @@
 </head>
 
 <body class="bg-light">
+    <?php require('inc/header.php'); ?>
 
-<?php require('inc/header.php');?>
     <div class="my-5 px-4">
-        <h2 class="fw-bold h-font text-center">CONTACT US</h2> 
+        <h2 class="fw-bold h-font text-center">CONTACT US</h2>
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium omnis modi, sint 
-            vitae minus et debitis totam provident obcaecati nemo dolorum tempore esse perferendis 
-            nostrum nulla asperiores reprehenderit sapiente facilis!
+            <?php
+            // Include your PHP database connection code here
+            require('../webpage/inc/db_conn.php'); // Adjust the file path as needed
+
+            // Retrieve the dynamic content for "Contact Us"
+            $query = "SELECT content FROM contact_us_content WHERE id = 1"; // Assuming the content has ID 1
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Display the dynamic content
+            if ($row) {
+                echo $row['content'];
+            } else {
+                echo "Content not found.";
+            }
+            ?>
         </p>
     </div>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-lg-6 cl-md-6 mb-5 px-4">

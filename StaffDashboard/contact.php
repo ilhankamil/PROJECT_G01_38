@@ -170,58 +170,61 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-<!-- About Us Section -->
-<div class="row">
-<div class="col-lg-12">
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Edit About Us</h6>
+    <div class="container-fluid">
+        <!-- Edit Contact Us Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Edit Contact Us</h6>
+                    </div>
+                    <div class="card-body">
+      <div class="card-body">
+                    <?php
+                    // Include the database connection file
+                    include('../admindashboard/dbconnect.php');
+
+                    // Query to select the "Contact Us" content from the database
+                    $query = "SELECT content FROM contact_us_content WHERE id = 1"; // Assuming '1' is the ID of the "Contact Us" content
+
+                    try {
+                        // Prepare the SQL query
+                        $stmt = $pdo->prepare($query);
+
+                        // Execute the query
+                        $stmt->execute();
+
+                        // Fetch the result
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        // Check if a result was found
+                        if ($result) {
+                            $contactUsContent = $result['content'];
+
+                            // Output the content within a div or paragraph
+                            echo '<div id="contactUsContent">' . htmlspecialchars($contactUsContent) . '</div>';
+
+                            // Output the form for editing
+                            echo '<form method="POST" action="update_contact.php">';
+                            echo '<br><label for="newContent">New Content:</label><br>';
+                            echo '<textarea id="newContent" name="newContent" rows="4" cols="50">' . htmlspecialchars($contactUsContent) . '</textarea><br><br>';
+                            echo '<input type="submit" value="Save Changes">';
+                            echo '</form>';
+                        } else {
+                            echo 'Contact Us content not found.';
+                        }
+                    } catch (PDOException $e) {
+                        // Handle any errors that occur during the query
+                        echo 'Error: ' . $e->getMessage();
+                    }
+                    ?>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <?php
-            // Include the database connection file
-            include('../admindashboard/dbconnect.php');
-
-            // Query to select the "About Us" content from the database
-            $query = "SELECT content FROM about_us_content WHERE id = 1"; // Assuming '1' is the ID of the "About Us" content
-
-            try {
-                // Prepare the SQL query
-                $stmt = $pdo->prepare($query);
-
-                // Execute the query
-                $stmt->execute();
-
-                // Fetch the result
-                $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                // Check if a result was found
-                if ($result) {
-                    $aboutUsContent = $result['content'];
-
-                    // Output the content within a paragraph tag
-                    echo '<p>' . htmlspecialchars($aboutUsContent) . '</p>';
-                } else {
-                    echo 'About Us content not found.';
-                }
-            } catch (PDOException $e) {
-                // Handle any errors that occur during the query
-                echo 'Error: ' . $e->getMessage();
-            }
-            ?>
-            <!-- Include the form from edit.php here -->
-<form method="POST" action="update.php">
-    <label for="newContent">New Content:</label><br>
-    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
-    <input type="submit" value="Save Changes">
-</form>
-
-        </div>
+        <!-- End Edit Contact Us Section -->
     </div>
-</div>
-</div>
-<!-- End About Us Section -->
+    <!-- End Page Content -->
    <!-- Display Success Message -->
                <?php
                 // Check if the success query parameter is set
@@ -230,7 +233,6 @@
                 }
                 ?>
                 <!-- End Display Success Message -->
-
 
 
     <!-- Bootstrap core JavaScript-->
