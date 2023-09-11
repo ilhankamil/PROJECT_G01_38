@@ -1,3 +1,27 @@
+<?php
+session_start();
+include "dbconnect.php";
+
+// Check if the admin is logged in
+if (!isset($_SESSION['uname_or_email'])) {
+    header("Location: ../webpage/index.php"); // Redirect to the login page if not logged in
+    exit();
+}
+
+$uname_or_email = $_SESSION['uname_or_email'];
+
+$sql = "SELECT username, email, password FROM user WHERE email='$uname_or_email' OR username='$uname_or_email'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) === 1) {
+    $staff = mysqli_fetch_assoc($result); // Fetch the admin's data
+} else {
+    echo "Error fetching admin data"; // Handle the case where no results are found
+}
+
+mysqli_close($conn); // Close the connection
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,7 +201,7 @@
             </div>
             <div class="card-body">
                 <!-- Form for editing profile details -->
-                <form action="update_staff_profile.php" method="POST"> <!-- Change the action to your staff update profile script -->
+                <form action="update_profile.php" method="POST"> <!-- Change the action to your staff update profile script -->
                     <div class="form-group">
                         <label for="newUsername">New Username:</label>
                         <input type="text" class="form-control" id="newUsername" name="newUsername" placeholder="Enter New Username" value="<?php echo $staff['username']; ?>">
@@ -185,6 +209,14 @@
                     <div class="form-group">
                         <label for="newEmail">New Email:</label>
                         <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="Enter New Email" value="<?php echo $staff['email']; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">New Password:</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter New Password" ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">Re-type New Password:</label>
+                        <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="Re enter New Password"  ?>
                     </div>
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary">Save Changes</button>
