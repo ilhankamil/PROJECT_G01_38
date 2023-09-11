@@ -1,3 +1,27 @@
+<?php
+session_start();
+include "dbconnect.php";
+
+// Check if the admin is logged in
+if (!isset($_SESSION['uname_or_email'])) {
+    header("Location: ../webpage/index.php"); // Redirect to the login page if not logged in
+    exit();
+}
+
+$uname_or_email = $_SESSION['uname_or_email'];
+
+$sql = "SELECT username, email, password FROM user WHERE email='$uname_or_email' OR username='$uname_or_email'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) === 1) {
+    $admin = mysqli_fetch_assoc($result); // Fetch the admin's data
+} else {
+    echo "Error fetching admin data"; // Handle the case where no results are found
+}
+
+mysqli_close($conn); // Close the connection
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,6 +168,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">View/Edit Profile</h1>
+
 <!-- Profile Information -->
 <div class="row">
     <div class="col-md-6">
@@ -186,6 +211,18 @@
                         <label for="newEmail">New Email:</label>
                         <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="Enter New Email" value="<?php echo $admin['email']; ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="newEmail">New Password:</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter New Password" ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">Re-type New Password:</label>
+                        <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="Re enter New Password"  ?>
+                    </div>
+
+                    <!-- Message container for displaying error or success messages 
+                    <div id="profileMessageContainer"></div> -->
+
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
@@ -214,7 +251,49 @@
 </script>
 
 
+<!-- To handle message from update_profile.php 
+<script>
+    // Function to update the page with a message and class (error or success)
+    function updatePageWithMessage(message, isError) {
+        var messageContainer = document.getElementById('profileMessageContainer');
+        var messageClass = isError ? 'alert-danger' : 'alert-success';
 
+        // Create a new message element
+        var messageElement = document.createElement('div');
+        messageElement.className = 'alert ' + messageClass;
+        messageElement.innerHTML = message;
+
+        // Clear existing messages in the container
+        messageContainer.innerHTML = '';
+
+        // Append the new message to the container
+        messageContainer.appendChild(messageElement);
+    }
+
+    // Function to send an AJAX request to fetch messages
+    function fetchMessages() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'update_profile.php', true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.message) {
+                        updatePageWithMessage(response.message, response.isError);
+                    }
+                }
+            }
+        };
+
+        xhr.send();
+    }
+
+    // Call the function to fetch and display messages when the page loads
+    window.onload = function () {
+        fetchMessages();
+    };
+</script> -->
 
                 </div>
                 <!-- /.container-fluid -->
@@ -252,3 +331,4 @@
 </body>
 
 </html>
+
