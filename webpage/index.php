@@ -36,16 +36,16 @@
                 <img src="images/carousel/pic1.png" width=1920px, height=480px />
             </div>
             <div class="swiper-slide">
-                <img src="images/carousel/pic21.png" width=1920px, height=480px />
+                <img src="images/carousel/pic2.png" width=1920px, height=480px />
             </div>
             <div class="swiper-slide">
-                <img src="images/carousel/pic21.png" width=1920px, height=480px />
+                <img src="images/carousel/pic3.png" width=1920px, height=480px />
             </div>
             <div class="swiper-slide">
-                <img src="images/carousel/pic21.png" width=1920px, height=480px />
+                <img src="images/carousel/pic4.png" width=1920px, height=480px />
             </div>
             <div class="swiper-slide">
-                <img src="images/carousel/pic21.png" width=1920px, height=480px />
+                <img src="images/carousel/pic5.png" width=1920px, height=480px />
             </div>
             </div>
         </div>
