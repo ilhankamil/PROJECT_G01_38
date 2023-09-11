@@ -147,16 +147,33 @@
     </div>
 </div>
 
+
 <!-- Handling registerModal -->
 <script>
     function displayMessage(message, isError) {
-        const messageContainer = isError ? document.getElementById("error-messages") : document.getElementById("success-message");
-        messageContainer.innerHTML = message;
+        const errorContainer = document.getElementById("error-messages");
+        const successContainer = document.getElementById("success-message");
+
         if (isError) {
-            messageContainer.classList.remove("text-success");
+            // Clear success message and display error message
+            successContainer.innerHTML = "";
+            errorContainer.innerHTML = message;
+            errorContainer.classList.add("text-danger");
+            successContainer.classList.remove("text-success");
         } else {
-            messageContainer.classList.add("text-success");
+            // Clear error message and display success message
+            errorContainer.innerHTML = "";
+            successContainer.innerHTML = message;
+            successContainer.classList.add("text-success");
+            errorContainer.classList.remove("text-danger");
         }
+    }
+    
+    function resetMessageContainers() {
+        const errorContainer = document.getElementById("error-messages");
+        const successContainer = document.getElementById("success-message");
+        errorContainer.innerHTML = "";
+        successContainer.innerHTML = "";
     }
 
     function toggleLoadingIndicator(show) {
@@ -176,6 +193,9 @@
 
             // Show the loading indicator when the form is submitted
             toggleLoadingIndicator(true);
+
+            // Clear existing messages
+            resetMessageContainers();
 
             // Serialize form data
             const formData = new FormData(form);
