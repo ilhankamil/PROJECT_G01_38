@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate and sanitize the user input as needed.
     
     // Specify the path to the about.php file.
-    $aboutFilePath = 'C:/xampp/htdocs/sd/webpage/contact.php'; //add homeppage about.php
+    $aboutFilePath = './webpage/contact.php'; //add homeppage about.php
 
     // Read the content of "about.php" into a string.
     $fileContent = file_get_contents($aboutFilePath);

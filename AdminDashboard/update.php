@@ -1,22 +1,30 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newContent = $_POST["newContent"];
-    
-    // Validate and sanitize the user input as needed.
-    
-    // Specify the path to the about.php file.
-    $aboutFilePath = 'C:/xampp/htdocs/sd/webpage/about.php'; //add homeppage about.php
+// Include the database connection file
+include('../admindashboard/dbconnect.php');
 
-    // Read the content of "about.php" into a string.
-    $fileContent = file_get_contents($aboutFilePath);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the new content from the form submission
+    $newContent = $_POST['newContent'];
 
-    // Use regular expressions to find and replace the content within the <p> tag.
-    $updatedContent = preg_replace('/<p>(.*?)<\/p>/', '<p>' . $newContent . '</p>', $fileContent);
+    // SQL query to update the content in the database
+    $query = "UPDATE about_us_content SET content = :newContent WHERE id = 1"; // Assuming '1' is the ID of the "About Us" content
 
-    // Write the updated content back to "about.php".
-    file_put_contents($aboutFilePath, $updatedContent);
+    try {
+        // Prepare the SQL query
+        $stmt = $pdo->prepare($query);
 
-    // Redirect back to the original page or display a success message.
-    header("Location: about.php"); //this is edit about page on the admin dashboaard
+        // Bind the new content to the query
+        $stmt->bindParam(':newContent', $newContent, PDO::PARAM_STR);
+
+        // Execute the query
+        $stmt->execute();
+
+        // Redirect back to the about.php page with a success query parameter
+        header("Location: about.php?success=1");
+        exit();
+    } catch (PDOException $e) {
+        // Handle any errors that occur during the query
+        echo 'Error: ' . $e->getMessage();
+    }
 }
 ?>

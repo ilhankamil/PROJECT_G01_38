@@ -2,7 +2,7 @@
 $host = "localhost"; // Change to your database host
 $dbname = "proonebadmintoncentre"; // Change to your database name
 $username = "proadmin38"; // Change to your database username
-$password = "proadmin38"; // Change to your database password
+$password = "proadmin38";
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);

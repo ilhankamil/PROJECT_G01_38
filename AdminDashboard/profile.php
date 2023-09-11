@@ -144,59 +144,77 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">View/Edit Profile</h1>
+<!-- Profile Information -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Profile Details
+            </div>
+            <div class="card-body" id="profileDetails"> <!-- Add an ID to this div for JavaScript -->
+                <!-- Display Profile Details from Database -->
+                <div class="form-group">
+                    <label for="adminUsername">Username:</label>
+                    <input type="text" class="form-control" id="adminUsername" value="<?php echo $admin['username']; ?>" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail">Email:</label>
+                    <input type="email" class="form-control" id="adminEmail" value="<?php echo $admin['email']; ?>" disabled>
+                </div>
+                <!-- Add more fields as needed -->
+                <button id="editProfileButton" class="btn btn-primary">Edit Profile</button> <!-- Add a button to trigger the edit form -->
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <!-- Profile Information -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    Profile Details
-                                </div>
-                                <div class="card-body">
-                                    <!-- Display Profile Details from Database -->
-                                    <div class="form-group">
-                                        <label for="fullName">Full Name:</label>
-                                        <input type="text" class="form-control" id="fullName" value="John Doe"
-                                            disabled>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email"
-                                            value="johndoe@example.com" disabled>
-                                    </div>
-                                    <!-- Add more fields as needed -->
-                                </div>
-                            </div>
-                        </div>
+<!-- Edit Profile Information Form (Initially Hidden) -->
+<div class="row mt-4" id="editProfileForm" style="display: none;"> <!-- Add an ID to this div for JavaScript -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                Edit Profile
+            </div>
+            <div class="card-body">
+                <!-- Form for editing profile details -->
+                <form action="update_profile.php" method="POST">
+                    <div class="form-group">
+                        <label for="newUsername">New Username:</label>
+                        <input type="text" class="form-control" id="newUsername" name="newUsername" placeholder="Enter New Username" value="<?php echo $admin['username']; ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="newEmail">New Email:</label>
+                        <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="Enter New Email" value="<?php echo $admin['email']; ?>">
+                    </div>
+                    <!-- Add more fields as needed -->
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+                <button id="cancelEditButton" class="btn btn-secondary mt-2">Cancel</button> <!-- Add a button to cancel editing -->
+            </div>
+        </div>
+    </div>
+</div>
 
-                    <!-- Edit Profile Information Form -->
-                    <div class="row mt-4">
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-header">
-                                    Edit Profile
-                                </div>
-                                <div class="card-body">
-                                    <!-- Form for editing profile details -->
-                                    <form action="update_profile.php" method="POST">
-                                        <div class="form-group">
-                                            <label for="newFullName">New Full Name:</label>
-                                            <input type="text" class="form-control" id="newFullName"
-                                                name="newFullName" placeholder="Enter New Full Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="newEmail">New Email:</label>
-                                            <input type="email" class="form-control" id="newEmail" name="newEmail"
-                                                placeholder="Enter New Email">
-                                        </div>
-                                        <!-- Add more fields as needed -->
-                                        <button type="submit" class="btn btn-primary">Save Changes</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<!-- JavaScript to toggle between profile details and edit form -->
+<script>
+    const profileDetails = document.getElementById('profileDetails');
+    const editProfileForm = document.getElementById('editProfileForm');
+    const editProfileButton = document.getElementById('editProfileButton');
+    const cancelEditButton = document.getElementById('cancelEditButton');
+
+    editProfileButton.addEventListener('click', () => {
+        profileDetails.style.display = 'none';
+        editProfileForm.style.display = 'block';
+    });
+
+    cancelEditButton.addEventListener('click', () => {
+        editProfileForm.style.display = 'none';
+        profileDetails.style.display = 'block';
+    });
+</script>
+
+
+
 
                 </div>
                 <!-- /.container-fluid -->
