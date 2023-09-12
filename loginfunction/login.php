@@ -43,7 +43,7 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
                         $userType = $row['userType'];
 
                         if ($userType == "customer") {
-                            $response['redirect'] = "customer.php"; // Set the redirect URL in the response
+                            $response['redirect'] = "../Customer/index.php"; // Set the redirect URL in the response
                         } elseif ($userType == "staff") {
                             $response['redirect'] = "../StaffDashboard/index.php"; // Set the redirect URL in the response
                         } elseif ($userType == "admin") {
