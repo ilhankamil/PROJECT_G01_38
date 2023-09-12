@@ -1,22 +1,32 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $newContent = $_POST["newContent"];
-    
-    // Validate and sanitize the user input as needed.
-    
-    // Specify the path to the about.php file.
-    $aboutFilePath = './webpage/contact.php'; //add homeppage about.php
+// Include the database connection file
+include('../admindashboard/dbconnect.php');
 
-    // Read the content of "about.php" into a string.
-    $fileContent = file_get_contents($aboutFilePath);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the new content from the form
+    $newContent = $_POST['newContent'];
 
-    // Use regular expressions to find and replace the content within the <p> tag.
-    $updatedContent = preg_replace('/<p>(.*?)<\/p>/', '<p>' . $newContent . '</p>', $fileContent);
+    // Query to update the "Contact Us" content
+    $query = "UPDATE contact_us_content SET content = :newContent WHERE id = 1"; // Assuming '1' is the ID of the "Contact Us" content
 
-    // Write the updated content back to "about.php".
-    file_put_contents($aboutFilePath, $updatedContent);
+    try {
+        // Prepare the SQL query
+        $stmt = $pdo->prepare($query);
 
-    // Redirect back to the original page or display a success message.
-    header("Location: contact.php"); //this is edit about page on the admin dashboaard
+        // Bind parameters
+        $stmt->bindParam(':newContent', $newContent, PDO::PARAM_STR);
+
+        // Execute the query
+        if ($stmt->execute()) {
+            // Redirect back to the edit page with a success message
+            header('Location: contact.php?success=1');
+            exit();
+        } else {
+            echo 'Failed to update Contact Us content.';
+        }
+    } catch (PDOException $e) {
+        // Handle any errors that occur during the query
+        echo 'Error: ' . $e->getMessage();
+    }
 }
 ?>

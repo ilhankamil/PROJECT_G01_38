@@ -45,8 +45,12 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
                         if ($userType == "customer") {
                             $response['redirect'] = "customer.php"; // Set the redirect URL in the response
                         } elseif ($userType == "staff") {
-                            $response['redirect'] = "staff.php"; // Set the redirect URL in the response
+                            $response['redirect'] = "../StaffDashboard/index.php"; // Set the redirect URL in the response
                         } elseif ($userType == "admin") {
+                            $_SESSION['admin_logged_in'] = true;
+                            $_SESSION['admin_email'] = $row['email'];
+                            $_SESSION['admin_username'] = $row['username'];
+                            
                             $response['redirect'] = "../AdminDashboard/index.php"; // Set the redirect URL in the response
                         } else {
                             $response['error'] = "Unknown user type"; // Set an error message in the response
@@ -83,9 +87,13 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
                         if ($userType == "customer") {
                             $response['redirect'] = "customer.php"; // Set the redirect URL in the response
                         } elseif ($userType == "staff") {
-                            $response['redirect'] = "staff.php"; // Set the redirect URL in the response
+                            $response['redirect'] = "../StaffDashboard/index.php"; // Set the redirect URL in the response
                         } elseif ($userType == "admin") {
+                            $_SESSION['admin_logged_in'] = true;
+                            $_SESSION['admin_email'] = $row['email'];
+                            $_SESSION['admin_username'] = $row['username'];
                             $response['redirect'] = "../AdminDashboard/index.php"; // Set the redirect URL in the response
+                            
                         } else {
                             $response['error'] = "Unknown user type"; // Set an error message in the response
                         }

@@ -1,3 +1,32 @@
+<?php
+session_start();
+include "dbconnect.php";
+
+// Check if the admin is logged in
+if (!isset($_SESSION['uname_or_email'])) {
+    header("Location: ../webpage/index.php"); // Redirect to the login page if not logged in
+    exit();
+}
+
+$uname_or_email = $_SESSION['uname_or_email'];
+
+$sql = "SELECT username, email, password FROM user WHERE email='$uname_or_email' OR username='$uname_or_email'";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) === 1) {
+    $admin = mysqli_fetch_assoc($result); // Fetch the admin's data
+} else {
+    echo "Error fetching admin data"; // Handle the case where no results are found
+}
+
+mysqli_close($conn); // Close the connection
+
+// Check if there is a success or error message in the query parameters
+$successMessage = isset($_GET['success']) ? 'Profile updated successfully.' : '';
+$errorMessage = isset($_GET['error']) ? 'Error updating profile.' : '';
+$errorMessage .= isset($_GET['message']) ? '<br>' . $_GET['message'] : ''; // Append detailed error message if available
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,6 +173,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">View/Edit Profile</h1>
+
 <!-- Profile Information -->
 <div class="row">
     <div class="col-md-6">
@@ -186,6 +216,26 @@
                         <label for="newEmail">New Email:</label>
                         <input type="email" class="form-control" id="newEmail" name="newEmail" placeholder="Enter New Email" value="<?php echo $admin['email']; ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="newEmail">New Password:</label>
+                        <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter New Password" ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="newEmail">Re-type New Password:</label>
+                        <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="Re enter New Password"  ?>
+                    </div>
+
+                     <!-- Message container for displaying error or success messages -->
+                     <div id="profileMessageContainer">
+                        <?php
+                        if (!empty($successMessage)) {
+                            echo '<div class="alert alert-success">' . $successMessage . '</div>';
+                        } elseif (!empty($errorMessage)) {
+                            echo '<div class="alert alert-danger">' . $errorMessage . '</div>';
+                        }
+                        ?>
+                    </div>
+
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary">Save Changes</button>
                 </form>
@@ -212,9 +262,6 @@
         profileDetails.style.display = 'block';
     });
 </script>
-
-
-
 
                 </div>
                 <!-- /.container-fluid -->
@@ -252,3 +299,4 @@
 </body>
 
 </html>
+

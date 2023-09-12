@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -164,86 +164,74 @@
                         <!-- Nav Item - Alerts -->
                   
                         <div class="topbar-divider d-none d-sm-block"></div>
-
-                        <!-- Nav Item - User Information -->
-                          <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Your profile</span>
-
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-  <!-- Dropdown - User Information -->
-    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-        aria-labelledby="userDropdown">
-        <!-- Add "View Profile" button -->
-        <a class="dropdown-item" href="profile.php">
-            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-            View Profile
-        </a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-            Logout
-        </a>
-    </div>
-</li>
-
-                    </ul>
+           </ul>
 
                 </nav>
                 <!-- End of Topbar -->
+ <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Edit Contact Us Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Edit Contact Us</h6>
+                    </div>
+                    <div class="card-body">
+      <div class="card-body">
+                    <?php
+                    // Include the database connection file
+                    include('../admindashboard/dbconnect.php');
 
-<!-- Begin Page Content -->
-<div class="container-fluid">
-                  <!-- Profile Modal -->
-<div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="profileModalLabel">View Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-    <!-- Contact Us Section -->
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Edit Contact Us</h6>
-            </div>
-            <div class="card-body">
-                <!-- Include the form from edit.php here -->
-                <form method="POST" action="update_contact.php">
-                    <label for="newContent">New Content:</label><br>
-                    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
-                    <input type="submit" value="Save Changes">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-                    <!-- End Contact Form -->
+                    // Query to select the "Contact Us" content from the database
+                    $query = "SELECT content FROM contact_us_content WHERE id = 1"; // Assuming '1' is the ID of the "Contact Us" content
+
+                    try {
+                        // Prepare the SQL query
+                        $stmt = $pdo->prepare($query);
+
+                        // Execute the query
+                        $stmt->execute();
+
+                        // Fetch the result
+                        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        // Check if a result was found
+                        if ($result) {
+                            $contactUsContent = $result['content'];
+
+                            // Output the content within a div or paragraph
+                            echo '<div id="contactUsContent">' . htmlspecialchars($contactUsContent) . '</div>';
+
+                            // Output the form for editing
+                            echo '<form method="POST" action="update_contact.php">';
+                            echo '<br><label for="newContent">New Content:</label><br>';
+                            echo '<textarea id="newContent" name="newContent" rows="4" cols="50">' . htmlspecialchars($contactUsContent) . '</textarea><br><br>';
+                            echo '<input type="submit" value="Save Changes">';
+                            echo '</form>';
+                        } else {
+                            echo 'Contact Us content not found.';
+                        }
+                    } catch (PDOException $e) {
+                        // Handle any errors that occur during the query
+                        echo 'Error: ' . $e->getMessage();
+                    }
+                    ?>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- End Edit Contact Us Section -->
     </div>
-    <!-- End Contact Us Section -->
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages -->
-    <script src="js/sb-admin-2.min.js"></script>
-</div>
-<!-- /.container-fluid -->
+    <!-- End Page Content -->
+   <!-- Display Success Message -->
+               <?php
+                // Check if the success query parameter is set
+                if (isset($_GET["success"]) && $_GET["success"] == 1) {
+                    echo '<div class="alert alert-success">Changes have been saved successfully.</div>';
+                }
+                ?>
+                <!-- End Display Success Message -->
 
 
 
