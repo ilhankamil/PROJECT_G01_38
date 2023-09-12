@@ -98,23 +98,20 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 my-3s"> <!-- Card Showcase -->
                 <div class="card border-0 shadow" style="max-width: 360px; margin: auto">
-                    <img src="images/features/#"  class="card-img-top"> <!-- Card Picture -->
+                    <img src="images/indexpics/pic1.jpg"  class="card-img-top"> <!-- Card Picture -->
                         <div class="card-body">
-                            <h5>Service name</h5> <!-- Parking, Food and Accesories Shop, Court Quaility, Equipment Rental (add more if there is any) -->
-                            <h6 class="mb-4">Service pricing or promote it</h6>
+                            <h5>Quality Court</h5> <!-- Parking, Food and Accesories Shop, Court Quaility, Equipment Rental (add more if there is any) -->
+                            <h6 class="mb-4">Enjoy our high quality court that suits any level of badminton players</h6>
                             <div class="features mb-4">
                                 <h6 class="mb-1">Features</h6>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Strong Net
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Abundance amount of courts
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
-                                </span>
-                                <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Suitable for adults and kids
                                 </span>
                             </div>
                                 <div class="d-flex justify-content-evenly mb-1"></div>
@@ -125,23 +122,23 @@
 
             <div class="col-lg-4 col-md-6 my-3s"> <!-- Card Showcase -->
                 <div class="card border-0 shadow" style="max-width: 360px; margin: auto">
-                    <img src="images/features/#"  class="card-img-top"> <!-- Card Picture -->
+                    <img src="images/indexpics/pic2.jpeg"  class="card-img-top"> <!-- Card Picture -->
                         <div class="card-body">
-                            <h5>Service name</h5> <!-- Parking, Food and Accesories Shop, Court Quaility, Equipment Rental (add more if there is any) -->
-                            <h6 class="mb-4">Service pricing or promote it</h6>
+                            <h5>Badminton Accesories Shop</h5> <!-- Parking, Food and Accesories Shop, Court Quaility, Equipment Rental (add more if there is any) -->
+                            <h6 class="mb-4">A shope is provided to supply badminton-related items</h6>
                             <div class="features mb-4">
                                 <h6 class="mb-1">Features</h6>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Quality Badminton Rackets
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Shuttercock replenishment
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Badminton Bags and Holsters
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Friendly Staff
                                 </span>
                             </div>
                                 <div class="d-flex justify-content-evenly mb-1"></div>
@@ -152,23 +149,23 @@
 
             <div class="col-lg-4 col-md-6 my-3s"> <!-- Card Showcase -->
                 <div class="card border-0 shadow" style="max-width: 360px; margin: auto">
-                    <img src="images/features/#"  class="card-img-top"> <!-- Card Picture -->
+                    <img src="images/indexpics/pic3.jpg"  class="card-img-top"> <!-- Card Picture -->
                         <div class="card-body">
-                            <h5>Service name</h5> <!-- Parking, Food and Accesories Shop, Court Quaility, Equipment Rental (add more if there is any) -->
-                            <h6 class="mb-4">Service pricing or promote it</h6>
+                            <h5>Food and Drinks</h5> <!-- Parking, Food and Accesories Shop, Court Quaility, Equipment Rental (add more if there is any) -->
+                            <h6 class="mb-4">Convenience Store</h6>
                             <div class="features mb-4">
                                 <h6 class="mb-1">Features</h6>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Provides drinks and snack bars
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Isotonic water to energise
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Snack Bar to replenish energy
                                 </span>
                                 <span class="badge rounded-pill bg-light text-dark mb-3 text-wrap">
-                                Insert wat the service give
+                                Quality products for body needs
                                 </span>
                             </div>
                                 <div class="d-flex justify-content-evenly mb-1"></div>
@@ -194,15 +191,24 @@
                         <h5>Call Us</h5>
                         <a href="tel: +60340238668" class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-telephone-fill"></i>+60340238668
+                        </a><br>
+                        <a href="tel: +60340238668" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i>+60340238668
+                        </a>
                         </a>
                     </div>
                     
                     <div class="col-lg-4 col-md-4">
                     <div class="bg-white p-4 rounded mb-4">
                         <h5>Follow Us</h5>
-                        <a href="#" class="d-inline-block mb-3">
+                        <a href="https://m.facebook.com/profile.php?id=207639219785814" class="d-inline-block mb-3">
                             <span class="badge bg-light text-dark fs-6 p2">
-                                <i class="bi bi-facebook-fill"></i>Facebook
+                                <i class="bi bi-facebook me-1"></i>Facebook
+                            </span>
+                        </a>
+                        <a href="https://www.instagram.com/explore/locations/276414247/pro-one-badminton-court-wangsa-maju/" class="d-inline-block mb-3">
+                            <span class="badge bg-light text-dark fs-6 p2">
+                                <i class="bi bi-instagram me-1"></i>Instagram
                             </span>
                         </a>
                     </div>
