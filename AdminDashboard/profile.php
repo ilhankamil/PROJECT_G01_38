@@ -20,6 +20,11 @@ if (mysqli_num_rows($result) === 1) {
 }
 
 mysqli_close($conn); // Close the connection
+
+// Check if there is a success or error message in the query parameters
+$successMessage = isset($_GET['success']) ? 'Profile updated successfully.' : '';
+$errorMessage = isset($_GET['error']) ? 'Error updating profile.' : '';
+$errorMessage .= isset($_GET['message']) ? '<br>' . $_GET['message'] : ''; // Append detailed error message if available
 ?>
 
 <!DOCTYPE html>
@@ -220,8 +225,16 @@ mysqli_close($conn); // Close the connection
                         <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="Re enter New Password"  ?>
                     </div>
 
-                    <!-- Message container for displaying error or success messages 
-                    <div id="profileMessageContainer"></div> -->
+                     <!-- Message container for displaying error or success messages -->
+                     <div id="profileMessageContainer">
+                        <?php
+                        if (!empty($successMessage)) {
+                            echo '<div class="alert alert-success">' . $successMessage . '</div>';
+                        } elseif (!empty($errorMessage)) {
+                            echo '<div class="alert alert-danger">' . $errorMessage . '</div>';
+                        }
+                        ?>
+                    </div>
 
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -249,51 +262,6 @@ mysqli_close($conn); // Close the connection
         profileDetails.style.display = 'block';
     });
 </script>
-
-
-<!-- To handle message from update_profile.php 
-<script>
-    // Function to update the page with a message and class (error or success)
-    function updatePageWithMessage(message, isError) {
-        var messageContainer = document.getElementById('profileMessageContainer');
-        var messageClass = isError ? 'alert-danger' : 'alert-success';
-
-        // Create a new message element
-        var messageElement = document.createElement('div');
-        messageElement.className = 'alert ' + messageClass;
-        messageElement.innerHTML = message;
-
-        // Clear existing messages in the container
-        messageContainer.innerHTML = '';
-
-        // Append the new message to the container
-        messageContainer.appendChild(messageElement);
-    }
-
-    // Function to send an AJAX request to fetch messages
-    function fetchMessages() {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'update_profile.php', true);
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var response = JSON.parse(xhr.responseText);
-                    if (response.message) {
-                        updatePageWithMessage(response.message, response.isError);
-                    }
-                }
-            }
-        };
-
-        xhr.send();
-    }
-
-    // Call the function to fetch and display messages when the page loads
-    window.onload = function () {
-        fetchMessages();
-    };
-</script> -->
 
                 </div>
                 <!-- /.container-fluid -->
