@@ -23,9 +23,7 @@
         <h2 class="fw-bold h-font text-center">OUR COURT</h2> 
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium omnis modi, sint 
-            vitae minus et debitis totam provident obcaecati nemo dolorum tempore esse perferendis 
-            nostrum nulla asperiores reprehenderit sapiente facilis!
+            Our court provides many features and facilities to further enhance the fun and experience for customers.
         </p>
     </div>
     
@@ -38,74 +36,62 @@
                         <h5 class="m-0 ms-3">Wifi</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ducimus, eaque 
-                        vitae quae nobis fuga consequuntur, ratione nostrum hic magnam iure, incidunt odit provident nemo 
-                        enim praesentium quo debitis optio.
+                        Our court features free Wi-Fi to ease the usage of QR Code and overall useful for everything use.
 
                     </p>
                 </div>
             </div><div class="col-lg-4 cl-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 border-dark">
                     <div class="d-flex align-items-center mb-4">
-                        <img src="images/features/wifi.svg" width="40px">
-                        <h5 class="m-0 ms-3">Wifi</h5>
+                        <img src="images/features/court.svg" width="40px">
+                        <h5 class="m-0 ms-3">Court</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ducimus, eaque 
-                        vitae quae nobis fuga consequuntur, ratione nostrum hic magnam iure, incidunt odit provident nemo 
-                        enim praesentium quo debitis optio.
+                        Our court offers a high quality of court and abundance amount of courts to ease users. More court, means more fun to be have!
 
                     </p>
                 </div>
             </div><div class="col-lg-4 cl-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 border-dark">
                     <div class="d-flex align-items-center mb-4">
-                        <img src="images/features/wifi.svg" width="40px">
-                        <h5 class="m-0 ms-3">Wifi</h5>
+                        <img src="images/features/currency-dollar.svg" width="40px">
+                        <h5 class="m-0 ms-3">Affordable</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ducimus, eaque 
-                        vitae quae nobis fuga consequuntur, ratione nostrum hic magnam iure, incidunt odit provident nemo 
-                        enim praesentium quo debitis optio.
+                        Our court is affordable to rent to give opportunity to attract more enthusiat who are just starting or wanting to further improve their game.
 
                     </p>
                 </div>
             </div><div class="col-lg-4 cl-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 border-dark">
                     <div class="d-flex align-items-center mb-4">
-                        <img src="images/features/wifi.svg" width="40px">
-                        <h5 class="m-0 ms-3">Wifi</h5>
+                        <img src="images/features/toilet.svg" width="40px">
+                        <h5 class="m-0 ms-3">Ammenities</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ducimus, eaque 
-                        vitae quae nobis fuga consequuntur, ratione nostrum hic magnam iure, incidunt odit provident nemo 
-                        enim praesentium quo debitis optio.
+                        At Pro One Badminton Pro Center, cleanliness is our number 1 priority. All of our ammenities are regularly cleaned and maintained to provide the best for our customers.
 
                     </p>
                 </div>
             </div><div class="col-lg-4 cl-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 border-dark">
                     <div class="d-flex align-items-center mb-4">
-                        <img src="images/features/wifi.svg" width="40px">
-                        <h5 class="m-0 ms-3">Wifi</h5>
+                        <img src="images/features/cup-straw.svg" width="40px">
+                        <h5 class="m-0 ms-3">Food and Drinks</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ducimus, eaque 
-                        vitae quae nobis fuga consequuntur, ratione nostrum hic magnam iure, incidunt odit provident nemo 
-                        enim praesentium quo debitis optio.
+                        Our court has a shop that provides food and drinks to energise our badminton goers to help them regain their focus and stamina.
 
                     </p>
                 </div>
             </div><div class="col-lg-4 cl-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4 border-top border-4 border-dark">
                     <div class="d-flex align-items-center mb-4">
-                        <img src="images/features/wifi.svg" width="40px">
-                        <h5 class="m-0 ms-3">Wifi</h5>
+                        <img src="images/features/shop.svg" width="40px">
+                        <h5 class="m-0 ms-3">Accesories Shop</h5>
                     </div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi ducimus, eaque 
-                        vitae quae nobis fuga consequuntur, ratione nostrum hic magnam iure, incidunt odit provident nemo 
-                        enim praesentium quo debitis optio.
+                        Court is not the only feature provided, shops to supply all your badminton needs are also available here! Come to our shop to resupply or get a new shiny racket to boost up your game in the court!
 
                     </p>
                 </div>
