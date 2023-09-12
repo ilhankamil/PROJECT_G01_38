@@ -47,15 +47,18 @@
 <div class="container">
     <div class="row justify-content-between align-items-center">
         <div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2">
-            <h3 class="mb-3">lorem ipsum dolor sit</h3>
+            <h3 class="mb-3">Meet the Team</h3>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur
-                deserunt saepe harum culpa, tenetur doloribus quidem ab quo hic alias non quos quod
-                tempore qui repellat facilis sint magnam?
+                Hi! Welcome to Pro One Badminton Center. My name is Ilhan Kamil bin Shahrin. Our objective are:<br>
+                1. Make Badminton accessible to everyone.<br>
+                2. Provide a training badminton ground.<br>
+                3. Make badminton fun.
+                We have many branches, and this branch is located at Wangsa Maju.<br>
+                Hope to see you in the court and having fun with badminton!
             </p>
         </div>
         <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-md-2 order-1">
-            <img src="images\about\Klee.png" class="w-100">
+            <img src="images\about\ilhan.jpg" class="w-100">
         </div>
     </div>
 </div>
@@ -71,14 +74,14 @@
         </div>
         <div class="col-lg-3 col-md-6 mb-4 px-4">
             <div class="bg-white rounded shadow p-4 border-top border-4 text-center box">
-                <img src="images\about\court.svg" width="70px">
+                <img src="images\about\journal.svg" width="70px">
                 <h4 class="mt-3">MANY FEATURES</h4>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-4 px-4">
             <div class="bg-white rounded shadow p-4 border-top border-4 text-center box">
-                <img src="images\about\court.svg" width="70px">
-                <h4 class="mt-3">MANY BRANCHES</h4>
+                <img src="images\about\people-fill.svg" width="70px">
+                <h4 class="mt-3">100+ CUSTOMERS</h4>
             </div>
         </div>
     </div>
@@ -91,20 +94,28 @@
     <div class="swiper mySwiper">
         <div class="swiper-wrapper mb-5">
             <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                <img src="#" class="w-100">
-                <h5 class="mt-2">Random Name</h5>
+                <img src="images/about/ariff.jpg" class="w-100">
+                <h5 class="mt-2">AHMAD ARIFF AZAHARI BIN MOHD AZHAR</h5>
             </div>
             <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                <img src="#" class="w-100">
-                <h5 class="mt-2">Random Name</h5>
+                <img src="images/about/raif.jpg" class="w-100">
+                <h5 class="mt-2">ABANG RAIF ZAKWAN BIN ABANG RAZALI</h5>
             </div>
             <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                <img src="#" class="w-100">
-                <h5 class="mt-2">Random Name</h5>
+                <img src="images/about/david.jpg" class="w-100">
+                <h5 class="mt-2">DAVID GOH TONG WEY</h5>
             </div>
             <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                <img src="#" class="w-100">
-                <h5 class="mt-2">Random Name</h5>
+                <img src="images/about/faiq.jpg" class="w-100">
+                <h5 class="mt-2">MOHD FAIQ HAZIQ BIN MOHD ZAMRI</h5>
+            </div>
+            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                <img src="images/about/faiq.jpg" class="w-100">
+                <h5 class="mt-2">MOHD FAIQ HAZIQ BIN MOHD ZAMBERI</h5>
+            </div>
+            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                <img src="images/about/shamil.jpg" class="w-100">
+                <h5 class="mt-2">MUHAMMAD SHAMIL BIN MOHD SABIRIN</h5>
             </div>
         </div>
         <div class="swiper-pagination"></div>
