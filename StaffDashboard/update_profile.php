@@ -100,32 +100,33 @@ if (isset($_POST['newUsername']) || isset($_POST['newEmail']) || isset($_POST['n
                 // Handle success
                 if ($updateUsername) {
                     $_SESSION['uname_or_email'] = $updateUsername;
+                    
                 }
+                
+               // Set success message as a query parameter
+               header("Location: profile.php?success=1");
+               exit();
 
-                // Set success message
-                $responseMessage = 'Successfully updated profile';
-
-                // Redirect to profile.php
-                header("Location: profile.php");
-exit();
             } else {
                 // Error updating 'staff' table
                 // Handle error
-                $responseMessage = 'Error while updating profile';
+                 header("Location: profile.php?error=1&message=" . urlencode('Error while updating profile'));
+                exit();
             }
         } else {
             // Error occurred during the update for the 'user' table
-            $responseMessage = 'Error while updating profile: ' . mysqli_error($conn);
+            header("Location: profile.php?error=1&message=" . urlencode('Error while updating profile: ' . mysqli_error($conn)));
+            exit();
         }
     } else {
         // staff with the specified email not found
-        $responseMessage = 'staff not found for the specified email';
+        header("Location: profile.php?error=1&message=" . urlencode('Admin not found for the specified email')); 
     }
 
     mysqli_close($conn); // Close the database connection
 } else {
     // Invalid request
-    $responseMessage = 'Invalid request';
+    header("Location: profile.php?error=1&message=" . urlencode('Invalid request'));
 }
 
 ?>
