@@ -37,21 +37,52 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 </head>
 <body>
 
-    <h1>Reset Password</h1>
+<h1>Reset Password</h1>
 
-    <form method="post" action="process-reset-password.php">
+<form id="reset-form">
+    <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
 
-        <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+    <label for="password">New password</label>
+    <input type="password" id="password" name="password">
 
-        <label for="password">New password</label>
-        <input type="password" id="password" name="password">
+    <label for="password_confirmation">Repeat password</label>
+    <input type="password" id="password_confirmation" name="password_confirmation">
 
-        <label for="password_confirmation">Repeat password</label>
-        <input type="password" id="password_confirmation"
-               name="password_confirmation">
+    <button id="reset-button">Send</button>
+</form>
 
-        <button>Send</button>
-    </form>
+<div id="error-message" style="color: red;"></div>
+
+<script>
+    document.getElementById("reset-button").addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const form = document.getElementById("reset-form");
+        const errorMessage = document.getElementById("error-message");
+
+        fetch("process-reset-password.php", {
+            method: "POST",
+            body: new FormData(form),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                errorMessage.textContent = data.error;
+            } else if (data.success) {
+                errorMessage.style.color = "green";
+                errorMessage.textContent = data.success;
+                // Check for a "redirect" key in the response
+                if (data.redirect) {
+                // Redirect to the specified URL
+                window.location.href = data.redirect;
+                }
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+    });
+</script>
 
 </body>
 </html>

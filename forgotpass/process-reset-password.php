@@ -1,6 +1,6 @@
 <?php
-// before inserting the new password into database this file will check token if is valid
-$token = $_POST["token"]; //this value is from reset-password.php
+// before inserting the new password into the database, this file will check if the token is valid
+$token = $_POST["token"]; // this value is from reset-password.php
 
 $token_hash = hash("sha256", $token);
 
@@ -19,51 +19,64 @@ $result = $stmt->get_result();
 
 $user = $result->fetch_assoc();
 
+$response = [];
+
 if ($user === null) {
-    die("token not found");
+    $response["error"] = "Token not found";
 }
 
 if (strtotime($user["reset_token_expires_at"]) <= time()) {
-    die("token has expired");
+    $response["error"] = "Token has expired";
 }
 
-if (strlen($_POST["password"]) < 8) {
-    die("Password must be at least 8 characters");
+$password = $_POST["password"];
+
+// Password restrictions
+if (strlen($password) < 8) {
+    $response["error"] = "Password must be at least 8 characters";
 }
 
-if ( ! preg_match("/[a-z]/i", $_POST["password"])) {
-    die("Password must contain at least one letter");
+if (!preg_match("/[a-z]/", $password)) {
+    $response["error"] = "Password must contain at least one lowercase letter";
 }
 
-if ( ! preg_match("/[0-9]/", $_POST["password"])) {
-    die("Password must contain at least one number");
+if (!preg_match("/[A-Z]/", $password)) {
+    $response["error"] = "Password must contain at least one uppercase letter";
 }
 
-if ($_POST["password"] !== $_POST["password_confirmation"]) {
-    die("Passwords must match");
+if (!preg_match("/\d/", $password)) {
+    $response["error"] = "Password must contain at least one number";
 }
 
-$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+if (!preg_match("/[!@#$%^&*()\-_=+{};:,<.>]/", $password)) {
+    $response["error"] = "Password must contain at least one special character";
+}
 
-$sql = "UPDATE user
-        SET password = ?,
-            reset_token_hash = NULL,
-            reset_token_expires_at = NULL
-        WHERE id = ?";
+if ($password !== $_POST["password_confirmation"]) {
+    $response["error"] = "Passwords must match";
+}
 
-$stmt = $mysqli->prepare($sql);
+if (empty($response)) {
+    // If no errors, update the password
+    $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-$stmt->bind_param("ss", $password_hash, $user["id"]);
+    $sql = "UPDATE user
+            SET password = ?,
+                reset_token_hash = NULL,
+                reset_token_expires_at = NULL
+            WHERE id = ?";
 
-$stmt->execute();
+    $stmt = $mysqli->prepare($sql);
 
-echo "Password updated. You can now login.";
+    $stmt->bind_param("ss", $password_hash, $user["id"]);
 
-// Delay for 3 seconds
-sleep(2);
+    $stmt->execute();
 
-// Redirect to the main page
-header("Location: ../webpage/index.php");
-exit; // Make sure to exit after the redirect
+    $response["success"] = "Password updated. You can now login.";
 
+    $response["redirect"] = "../webpage/index.php";
+}
+
+// Return JSON response
+echo json_encode($response);
 ?>
