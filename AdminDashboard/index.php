@@ -67,7 +67,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data:</h6>
                         <a class="collapse-item" href="button.php">Booked Courts</a>
-                        <a class="collapse-item" href="cards.php">User Management</a>
+                        <a class="collapse-item" href="usermanage.php">User Management</a>
                     </div>
                 </div>
             </li>
