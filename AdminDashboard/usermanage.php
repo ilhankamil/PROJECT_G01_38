@@ -198,56 +198,75 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+<div class="container-fluid">
 
-                   <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">User Management</h1>
-                    <p class="mb-4">To manage existing users within the database. <a target="_blank"
-                            href="https://datatables.net">User Management</a>.</p>
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">User Management</h1>
+    <p class="mb-4">Manage customers and staff.</p>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">User Management</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
+<!-- User Management Table -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer and Staff Management</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="userManagementTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include('dbconnect.php'); 
+                    // Retrieve and display customer data
+                    $stmt = $pdo->prepare("SELECT username, email FROM customer");
+                    $stmt->execute();
 
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<td>' . $row['username'] . '</td>';
+                        echo '<td>' . $row['email'] . '</td>';
+                        echo '<td>Customer</td>';
+                        echo '<td>';
+                        echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
+                        echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
+                        echo '</td>';
+                        echo '</tr>';
+                    }
+
+                    // Retrieve and display staff data
+                    $stmt = $pdo->prepare("SELECT username, email FROM staff");
+                    $stmt->execute();
+
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<td>' . $row['username'] . '</td>';
+                        echo '<td>' . $row['email'] . '</td>';
+                        echo '<td>Staff</td>';
+                        echo '<td>';
+                        echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
+                        echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
+                        echo '</td>';
+                        echo '</tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Add User Button -->
+<div class="text-right">
+    <a href="add_user.php" class="btn btn-primary">Add User</a>
+</div>
+
+</div>
+<!-- End Page Content -->
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
