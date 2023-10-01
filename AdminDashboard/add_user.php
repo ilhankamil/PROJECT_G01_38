@@ -33,3 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else {
                 // Error handling (e.g., display an error message)
                 echo "Error adding user.";
+            }
+        }
+    }
+}
