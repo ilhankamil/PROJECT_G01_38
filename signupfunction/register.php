@@ -33,7 +33,8 @@ if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['phonenumbe
     $pass = validate($_POST['passwordR']);
     $re_pass = validate($_POST['confirm_password']);
 
-    $user_data = 'uname=' . $uname;
+    // Password restrictions
+    $password_regex = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/';
 
     if (empty($uname)) {
         $response["error"] = "Username is required";
@@ -47,6 +48,8 @@ if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['phonenumbe
         $response["error"] = "Confirm password is required";
     } else if ($pass !== $re_pass) {
         $response["error"] = "The confirmation password does not match";
+    } else if (!preg_match($password_regex, $pass)) {
+        $response["error"] = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one special character.";
     } else {
 
         $conn = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
