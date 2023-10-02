@@ -57,6 +57,7 @@
                 </div>
             </div>
 
+
             <div class="col-lg-6 cl-md-6 mb-6 px-4">
                 <div class="bg-white rounded shadow p-4">
                     <form>
@@ -80,6 +81,24 @@
                         <button type="button" class="btn text-black mt-3">SEND</button>
                         <!--fix the custom bg, button looked ugly af-->
                     </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row"> 
+            <div class="col-lg-6 cl-md-6 mb-5 px-4">
+
+            <div class="bg-white rounded shadow p-4 text-center">
+                    <h5>Business Hours</h5>
+                <p>Monday - Friday: 10:00 AM - 12:30 AM</p>
+                <p>Saturday - Sunday: 9:00 AM - 12:00 AM</p>
+                    <h6>Note:</h6>
+                    <p>Tuesday & Friday: 10:00 AM - 1:30 AM</p>
+                    <p>Monday, Wednesday & Thursday: 10:00 AM - 12:30 AM</p>
                 </div>
             </div>
 
