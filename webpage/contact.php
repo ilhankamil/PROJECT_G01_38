@@ -16,8 +16,23 @@
         <h2 class="fw-bold h-font text-center">CONTACT US</h2> 
         <div class="h-line bg-dark"></div>
         <p class="text-center mt-3">
-            Feel free to contact us and drop a visit to our center using the Google Map provided.<br>
-            Got any complaints? Feel free to send a message in our message box.
+        <?php
+            // Include your PHP database connection code here
+            require('../webpage/inc/db_conn.php'); // Adjust the file path as needed
+
+            // Retrieve the dynamic content for "Contact Us"
+            $query = "SELECT content FROM contact_us_content WHERE id = 1"; // Assuming the content has ID 1
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Display the dynamic content
+            if ($row) {
+                echo $row['content'];
+            } else {
+                echo "Content not found.";
+            }
+            ?>
         </p>
     </div>
     
@@ -90,8 +105,6 @@
 
     <div class="container">
         <div class="row"> 
-            <div class="col-lg-6 cl-md-6 mb-5 px-4">
-
             <div class="bg-white rounded shadow p-4 text-center">
                     <h5>Business Hours</h5>
                 <p>Monday - Friday: 10:00 AM - 12:30 AM</p>
@@ -101,7 +114,6 @@
                     <p>Monday, Wednesday & Thursday: 10:00 AM - 12:30 AM</p>
                 </div>
             </div>
-
         </div>
     </div>
 
