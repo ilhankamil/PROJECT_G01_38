@@ -57,10 +57,16 @@ if (isset($_POST['newUsername']) || isset($_POST['newEmail']) || isset($_POST['n
             } else {
                 // Passwords do not match
                 $responseMessage = 'Password and re-type password do not match';
+                // Display the error message and exit without performing any updates
+                header("Location: profile.php?error=1&message=" . urlencode($responseMessage));
+                exit();
             }
         } elseif ($updatePassword || $renewPassword) {
             // Either new password or re-type password is provided, but not both
             $responseMessage = 'Both new password and re-type password are required';
+            // Display the error message and exit without performing any updates
+            header("Location: profile.php?error=1&message=" . urlencode($responseMessage));
+            exit();
         }
 
         // Combine the updates into the SQL query for the 'user' table
@@ -120,7 +126,7 @@ if (isset($_POST['newUsername']) || isset($_POST['newEmail']) || isset($_POST['n
         }
     } else {
         // staff with the specified email not found
-        header("Location: profile.php?error=1&message=" . urlencode('Admin not found for the specified email')); 
+        header("Location: profile.php?error=1&message=" . urlencode('Staff not found for the specified email')); 
     }
 
     mysqli_close($conn); // Close the database connection

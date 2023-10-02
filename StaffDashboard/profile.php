@@ -186,7 +186,7 @@ mysqli_close($conn); // Close the connection
                     <input type="email" class="form-control" id="staffEmail" value="<?php echo $staff['email']; ?>" disabled>
                 </div>
                 <!-- Add more fields as needed -->
-                <button id="editProfileButton" class="btn btn-primary">Edit Profile</button> <!-- Add a button to trigger the edit form -->
+                <button id="editProfileButton" class="btn btn-primary" style="width: 130px;">Edit Profile</button> <!-- Add a button to trigger the edit form -->
             </div>
         </div>
     </div>
@@ -219,9 +219,9 @@ mysqli_close($conn); // Close the connection
                         <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="Re enter New Password"  ?>
                     </div>
                     <!-- Add more fields as needed -->
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-primary" style="width: 130px;">Save Changes</button>
                 </form>
-                <button id="cancelEditButton" class="btn btn-secondary mt-2">Cancel</button> <!-- Add a button to cancel editing -->
+                <button id="cancelEditButton" class="btn btn-secondary mt-2" style="width: 130px;">Cancel</button> <!-- Add a button to cancel editing -->
             </div>
         </div>
     </div>
