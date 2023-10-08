@@ -51,9 +51,19 @@ if (isset($_POST['newUsername']) || isset($_POST['newEmail']) || isset($_POST['n
         if ($updatePassword && $renewPassword) {
             // Both new password and re-type password are provided
             if ($updatePassword === $renewPassword) {
-                // Passwords match, hash the new password
-                $hashedPassword = password_hash($updatePassword, PASSWORD_DEFAULT);
-                $userUpdates[] = "password = '$hashedPassword'";
+                // Check if the password meets the specified criteria
+                if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{8,}$/', $updatePassword)) {
+                    // Passwords match and meet criteria, hash the new password
+                    $hashedPassword = password_hash($updatePassword, PASSWORD_DEFAULT);
+                    $userUpdates[] = "password = '$hashedPassword'";
+                } else {
+                    // Passwords do not meet criteria
+                    $responseMessage = 'Password must contain at least 1 uppercase letter, 1 lowercase letter, 1 number, 1 special character, and be at least 8 characters long.';
+
+                    // Display the error message and exit without performing any updates
+                    header("Location: profile.php?error=1&message=" . urlencode($responseMessage));
+                    exit();
+                }
             } else {
                 // Passwords do not match
                 $responseMessage = 'Password and re-type password do not match';
@@ -137,57 +147,3 @@ if (isset($_POST['newUsername']) || isset($_POST['newEmail']) || isset($_POST['n
     header("Location: profile.php?error=1&message=" . urlencode('Invalid request'));  
 }
 ?>
-
-<?php
-/*
-// Include your database connection code here
-include "dbconnect.php";
-
-session_start(); // Start a session if not already started
-
-// Check if the user is logged in and has an active session
-if (!isset($_SESSION['admin'])) {
-    header("Location: login.php"); // Redirect to the login page if not logged in
-    exit;
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Handle the form submission and update the profile
-    $newUsername = $_POST['newUsername'];
-    $newEmail = $_POST['newEmail'];
-    
-    // Validate and sanitize the inputs as needed
-
-    // Update the admin's profile in the database
-    $updateQuery = "UPDATE admin SET username = ?, email = ? WHERE username = ?";
-    
-    if ($stmt = $conn->prepare($updateQuery)) {
-        $stmt->bind_param("sss", $newUsername, $newEmail, $_SESSION['admin']['username']);
-        
-        if ($stmt->execute()) {
-            // Update was successful
-            $_SESSION['admin']['username'] = $newUsername; // Update the session data
-            $_SESSION['admin']['email'] = $newEmail; // Update the session data
-            header("Location: profile.php?success=1");
-            exit;
-        } else {
-            // Update failed
-            header("Location: profile.php?error=1");
-            exit;
-        }
-        
-        $stmt->close();
-    } else {
-        // SQL statement preparation failed
-        header("Location: profile.php?error=1");
-        exit;
-    }
-} else {
-    // Handle non-POST requests or other errors
-    echo "Invalid request.";
-}
-*/
-?>
-
-
-

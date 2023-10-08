@@ -2,7 +2,7 @@
 session_start();
 include "dbconnect.php";
 
-// Check if the admin is logged in
+// Check if the staff is logged in
 if (!isset($_SESSION['uname_or_email'])) {
     header("Location: ../webpage/index.php"); // Redirect to the login page if not logged in
     exit();
@@ -16,10 +16,15 @@ $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) === 1) {
     $staff = mysqli_fetch_assoc($result); // Fetch the admin's data
 } else {
-    echo "Error fetching admin data"; // Handle the case where no results are found
+    echo "Error fetching staff data"; // Handle the case where no results are found
 }
 
 mysqli_close($conn); // Close the connection
+
+// Check if there is a success or error message in the query parameters
+$successMessage = isset($_GET['success']) ? 'Profile updated successfully.' : '';
+$errorMessage = isset($_GET['error']) ? 'Error updating profile.' : '';
+$errorMessage .= isset($_GET['message']) ? '<br>' . $_GET['message'] : ''; // Append detailed error message if available
 ?>
 
 <!DOCTYPE html>
@@ -217,6 +222,16 @@ mysqli_close($conn); // Close the connection
                     <div class="form-group">
                         <label for="newEmail">Re-type New Password:</label>
                         <input type="password" class="form-control" id="renewPassword" name="renewPassword" placeholder="Re enter New Password"  ?>
+                    </div>
+                     <!-- Message container for displaying error or success messages -->
+                     <div id="profileMessageContainer">
+                        <?php
+                        if (!empty($successMessage)) {
+                            echo '<div class="alert alert-success">' . $successMessage . '</div>';
+                        } elseif (!empty($errorMessage)) {
+                            echo '<div class="alert alert-danger">' . $errorMessage . '</div>';
+                        }
+                        ?>
                     </div>
                     <!-- Add more fields as needed -->
                     <button type="submit" class="btn btn-primary" style="width: 130px;">Save Changes</button>
