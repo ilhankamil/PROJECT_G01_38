@@ -127,9 +127,14 @@
                         <label class="form-label">Username or Email address</label>
                         <input type="text" class="form-control shadow-none" name="uname_or_email"> <!--  email input -->
                     </div>
-                    <div class="mb-4">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control shadow-none" name="password"> <!--  password input -->
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <div class="input-group">
+                            <input type="password" class="form-control shadow-none" id="password" name="password">
+                                <span class="input-group-text">
+                                    <i class="bi bi-eye" id="togglePassword"></i>
+                                </span>
+                        </div>
                     </div>
 
                    <!-- Error messages will be displayed here -->
@@ -266,8 +271,32 @@ $(document).ready(function () {
 });
 </script>
 
+<script>
+$(document).ready(function () {
+    $("#togglePassword").on("click", function () {
+        const passwordField = $("#password");
+
+        // Toggle the input field type between password and text
+        if (passwordField.attr("type") === "password") {
+            passwordField.attr("type", "text");
+        } else {
+            passwordField.attr("type", "password");
+        }
+    });
+});
+</script>
+
 <style>
     .text-success {
         color: green;
     }
+
+    #togglePassword {
+    cursor: pointer;
+}
+
+/* Style for the input field to remove borders */
+.input-group input[type="password"] {
+    border-right: none;
+}
 </style>
