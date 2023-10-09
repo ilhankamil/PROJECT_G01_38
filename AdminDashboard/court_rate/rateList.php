@@ -1,83 +1,190 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Pro Badminton Centre - Admin Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Add this CSS code to the head of your HTML document -->
+    <style>
+        /* Style for the table */
+        table.custom-table {
+            border-collapse: collapse;
+            width: 100%;
+            border: 2px solid #e5e5e5; /* Define the outline color */
+        }
+
+        /* Style for table header (th) */
+        table.custom-table th {
+            background-color: #f2f2f2; /* Define header background color */
+            border: 1px solid #e5e5e5;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /* Style for table cells (td) */
+        table.custom-table td {
+            border: 1px solid #e5e5e5;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /* Style for table rows */
+        table.custom-table tr:nth-child(even) {
+            background-color: #f2f2f2; /* Define even row background color */
+        }
+        
+    </style>
+
 </head>
-<body>
-    <?php
-    include "rateFunction.php";
+<body id="page-top">
+     <!-- Page Wrapper -->
+     <div id="wrapper">
+    
+       <!-- Include sidebar.php -->
+       <?php include "inc/sidebar.php"; ?>
 
-    echo '<div class="w3-container">';
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
 
-    if(isset($_POST['searchByDayButton'])){
-        $dayOfWeek = $_POST['searchValue'];
-        $courtRateListQry = getCourtRate($dayOfWeek);
-    }
-    else {
-        $courtRateListQry = getListOfCourtRates();
-    }
+            <!-- Include header.php -->
+        <?php include "inc/header.php"; ?>
 
-    if(isset($_POST['AddButton'])){
-        header('Location: courtRateForm.php');
-    }
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>
+                    <!-- Rest of your content from rateList.php goes here -->
 
-    echo 'There are '.mysqli_num_rows($courtRateListQry).' records';
+                    <?php
+include "rateFunction.php";
 
-    echo '<table class="w3-table w3-striped">';
+echo '<div class="w3-container">';
+
+if(isset($_POST['searchByDayButton'])){
+    $dayOfWeek = $_POST['searchValue'];
+    $courtRateListQry = getCourtRate($dayOfWeek);
+}
+else {
+    $courtRateListQry = getListOfCourtRates();
+}
+
+echo 'There are '.mysqli_num_rows($courtRateListQry).' records';
+
+echo '<table class="custom-table">';
+echo '<tr>';
+echo '<th>No.</th>';
+echo '<th>Day of Week</th>';
+echo '<th>Rate (RM)</th>';
+echo '<th>Update</th>';
+echo '<th>Delete</th>';
+echo '</tr>';
+
+$count = 1;
+while($row = mysqli_fetch_assoc($courtRateListQry)) {
+    $dayOfWeek = $row['dayOfWeek'];
     echo '<tr>';
-    echo '<th>No.</th>';
-    echo '<th>Day of Week</th>';
-    echo '<th>Rate (RM)</th>';
-    echo '<th>Delete</th>';
-    echo '<th>Update</th>';
-    echo '</tr>';
-
-    $count = 1;
-    while($row = mysqli_fetch_assoc($courtRateListQry)) {
-        $dayOfWeek = $row['dayOfWeek'];
-        echo '<tr>';
-        echo '<td>'.$count.'</td>';
-        echo '<td>'.$dayOfWeek.'</td>';
-        echo '<td>'.$row['rate'].'</td>';
-        // Display delete form
-        echo '<td>';
-        echo '<form action="rateProcess.php" method="POST">';
-        echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToDelete">';
-        echo '<input type="submit" value="Delete" name="deleteCourtRateButton">';
-        echo '</form>';
-        echo '</td>';
-        // Update
-        echo '<td>';
-        echo '<form action="updateRate.php" method="POST">';
-        echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToUpdate">';
-        echo '<input type="submit" value="Update" name="updateCourtRateButton">';
-        echo '</form>';
-        echo '</td>';
-        echo '</tr>';
-        $count++;
-    }
-
-    echo '</table>';
-    echo '<br>';
-    echo '<br>';
-    echo '<br>';
-
-    addOption();
-    echo '<br>';
-
-    echo '<form action="logout.php" method="post">';
-    echo '<input type="submit" value="Logout">';
+    echo '<td>'.$count.'</td>';
+    echo '<td>'.$dayOfWeek.'</td>';
+    echo '<td>'.$row['rate'].'</td>';
+    // Update
+    echo '<td style="white-space: nowrap;">';
+    echo '<form action="updateRate.php" method="POST">';
+    echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToUpdate">';
+    echo '<input type="submit" value="Update" name="updateCourtRateButton" style="background-color:#577EFF; color: white;">';
     echo '</form>';
-    ?>
+    echo '</td>';
+    // Display delete form
+    echo '<td style="white-space: nowrap;">';
+    echo '<form action="rateProcess.php" method="POST">';
+    echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToDelete">';
+    echo '<input type="submit" value="Delete" name="deleteCourtRateButton" style="background-color: #FF5757; color: white;">';
+    echo '</form>';
+    echo '</td>';
+    echo '</tr>';
+    $count++;
+}
 
-    <?php
-    function addOption(){
-        echo '<form action="" method="POST">';
-        echo '<input type="submit" value="Add" name="AddButton">';
-        echo '</form>';
+echo '</table>';
+echo '<br>';
+echo '<br>';
+echo '<br>';
+?>
+
+<!-- JavaScript to handle the Add button click -->
+<script>
+    function redirectToCourtRateForm() {
+        window.location.href = 'courtRateForm.php';
     }
-    ?>
+</script>
+
+<!-- Add button -->
+<button onclick="redirectToCourtRateForm()" style="">Add</button>
+
+
+<?php
+function addOption(){
+    echo '<form action="" method="POST">';
+    echo '<input type="submit" value="Add" name="AddButton">';
+    echo '</form>';
+}
+?>
+
+                  
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+            
+        </div>
+        <!-- End of Content Wrapper -->
+
+        <!-- Include footer.php -->
+        <?php include "inc/footer.php"; ?>
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <?php include "inc/logoutmodal.php"; ?>
+   
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+
+</body>
+</html>
+
 </div>
 </body>
 </html>

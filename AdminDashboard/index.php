@@ -68,6 +68,7 @@
                         <h6 class="collapse-header">Data:</h6>
                         <a class="collapse-item" href="button.php">Booked Courts</a>
                         <a class="collapse-item" href="usermanage.php">User Management</a>
+                        <a class="collapse-item" href="court_rate/rateList.php">Court Rate</a>
                     </div>
                 </div>
             </li>
