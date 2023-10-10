@@ -205,52 +205,50 @@
     <h1 class="h3 mb-2 text-gray-800">User Management</h1>
     <p class="mb-4">Manage customers and staff.</p>
 
-    <!-- User Management Table -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Customer and Staff Management</h6>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="userManagementTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Username</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include('dbconnect.php'); 
-                        // Retrieve and display customer data
-                        $stmt = $pdo->prepare("SELECT username, email FROM customer");
-                        $stmt->execute();
+ <!-- User Management Table -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Customer Management</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="userManagementTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include('dbconnect.php');
+                    // Retrieve and display all customers (excluding admins and staff) from the user table
+                    $stmt = $pdo->prepare("SELECT username, email, userType FROM user WHERE userType = 'customer'");
+                    $stmt->execute();
 
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<tr>';
-                            echo '<td>' . $row['username'] . '</td>';
-                            echo '<td>' . $row['email'] . '</td>';
-                            echo '<td>Customer</td>';
-                            echo '<td>';
-                            echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
-                            echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
-                            echo '</td>';
-                            echo '</tr>';
-                        }
-
-                        // You can remove the staff-related code
-                        ?>
-                    </tbody>
-                </table>
-            </div>
+                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        echo '<tr>';
+                        echo '<td>' . $row['username'] . '</td>';
+                        echo '<td>' . $row['email'] . '</td>';
+                        echo '<td>' . ucfirst($row['userType']) . '</td>';
+                        echo '<td>';
+                        echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
+                        echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
+                        echo '</td>';
+                        echo '</tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </div>
-    <!-- Add User Button -->
-    <div class="text-right">
-        <a href="add_user.php" class="btn btn-primary">Add User</a>
-    </div>
+</div>
+<!-- Add User Button -->
+<div class="text-right">
+    <a href="add_user.php" class="btn btn-primary">Add User</a>
+</div>
 
 </div>
 <!-- End Page Content -->

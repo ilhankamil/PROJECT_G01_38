@@ -224,32 +224,16 @@
                 </thead>
                 <tbody>
                     <?php
-                    include('dbconnect.php'); 
-                    // Retrieve and display customer data
-                    $stmt = $pdo->prepare("SELECT username, email FROM customer");
+                    include('dbconnect.php');
+                    // Retrieve and display all users (excluding admins) from the user table
+                    $stmt = $pdo->prepare("SELECT username, email, userType FROM user WHERE userType != 'admin'");
                     $stmt->execute();
 
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo '<tr>';
                         echo '<td>' . $row['username'] . '</td>';
                         echo '<td>' . $row['email'] . '</td>';
-                        echo '<td>Customer</td>';
-                        echo '<td>';
-                        echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
-                        echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
-                        echo '</td>';
-                        echo '</tr>';
-                    }
-
-                    // Retrieve and display staff data
-                    $stmt = $pdo->prepare("SELECT username, email FROM staff");
-                    $stmt->execute();
-
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<tr>';
-                        echo '<td>' . $row['username'] . '</td>';
-                        echo '<td>' . $row['email'] . '</td>';
-                        echo '<td>Staff</td>';
+                        echo '<td>' . ucfirst($row['userType']) . '</td>';
                         echo '<td>';
                         echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
                         echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
@@ -266,6 +250,8 @@
 <div class="text-right">
     <a href="add_user.php" class="btn btn-primary">Add User</a>
 </div>
+
+
 
 </div>
 <!-- End Page Content -->
