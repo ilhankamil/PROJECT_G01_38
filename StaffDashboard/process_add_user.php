@@ -19,11 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':phonenumber', $phonenumber, PDO::PARAM_STR);
         $stmt->bindParam(':userType', $userType, PDO::PARAM_STR);
 
-        if ($stmt->execute()) {
-            // User added successfully, you can redirect or display a success message
-            header("Location: usermanage.php"); // Redirect back to the user management page
-            exit();
-        } else {
+if ($stmt->execute()) {
+    // User added successfully, update verified_email and verification_code
+    $user_id = $pdo->lastInsertId(); // Get the ID of the newly added user
+
+    $stmt = $pdo->prepare("UPDATE user SET verified_email = 1, verification_code = '000000' WHERE id = :id");
+    $stmt->bindParam(':id', $user_id, PDO::PARAM_INT);
+
+    if ($stmt->execute()) {
+        // Verification fields updated successfully
+        header("Location: usermanage.php"); // Redirect back to the user management page
+        exit();
+    } else {
             // Error handling (e.g., display an error message)
             echo "Error adding user.";
         }
