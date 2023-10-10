@@ -76,7 +76,7 @@
                     <?php
 include "rateFunction.php";
 
-echo '<div class="w3-container">';
+echo '<div>';
 
 if(isset($_POST['searchByDayButton'])){
     $dayOfWeek = $_POST['searchValue'];
