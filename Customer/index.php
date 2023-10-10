@@ -74,9 +74,100 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
         </div>
     </nav>
+
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+
+            <?php
+            include "dbconnect.php";
+            $sql = "SELECT * FROM court_rates";
+            $result = $conn->query($sql);
+
+            $courtRates = array();
+
+            if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $courtRates[] = $row;
+                }
+            }
+
+            ?>
+                <br>
+
+                <style>
+        /* Style for the table container */
+        .table {
+            width: 400px; /* Set the width to create a square */
+            height: 200px; /* Set the height to create a square */
+            margin: 0 auto; /* Center the container horizontally */
+            background-color: #f7f7f7; /* Background color for the shadow */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+            padding: 5px; /* Add padding for content */
+            overflow-y: auto; /* Add vertical scroll if content overflows */
+            border: 1px solid #000; /* Add a border around the container */
+        }
+
+        /* Style for the table */
+        .table table {
+            width: 100%;
+            border-collapse: collapse; /* Collapse the table borders */
+        }
+
+        /* Style for table headers */
+        .table th {
+            background-color: #333; /* Header background color */
+            color: #fff; /* Header text color */
+            border: 1px solid #000; /* Add a border around header cells */
+            padding: 8px; /* Add padding to header cells */
+        }
+
+        /* Style for table cells */
+        .table td {
+            text-align: center; /* Center-align cell content */
+            border: 1px solid #000; /* Add a border around data cells */
+            padding: 8px; /* Add padding to data cells */
+        }
+    </style>
+
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                 <h1 class="h3 mb-4 text-gray-800" style="text-align: center;">Court Rates</h1>
+            
+                 <!-- Display court rates in a table or styled format -->
+                    <table class="table">
+                        <thead>
+                             <tr>
+                                <th>Time Slot</th>
+                                <th>Rate</th>
+                            </tr>
+                        </thead>
+                     <tbody>
+                        <?php foreach ($courtRates as $rate) { ?>
+                        <tr>
+                            <td><?php echo $rate['dayOfWeek']; ?></td>
+                            <td><?php echo $rate['rate']; ?></td>
+                        </tr>
+                            <?php } ?>
+                     </tbody>
+                    </table>
+<br><br><br>
+
+    
+
+                  
+                </div>
+                <!-- Container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+            
+        </div>
+        <!-- End of Content Wrapper -->
 
 </div>
 
@@ -113,5 +204,10 @@
     <script src="js/sb-admin-2.min.js"></script>
 
 </body>
-</body>
+
+
+
+
+
 </html>
+

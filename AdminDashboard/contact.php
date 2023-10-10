@@ -65,10 +65,11 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
+                    <h6 class="collapse-header">Data:</h6>
                         <a class="collapse-item" href="button.php">Booked Courts</a>
                         <a class="collapse-item" href="usermanage.php">User Management</a>
-                    </div>
+                        <a class="collapse-item" href="court_rate/rateList.php">Court Rate</a>
+                        <a class="collapse-item" href="court_availability/courtList.php">Court List</a>
                 </div>
             </li>
 
