@@ -22,7 +22,7 @@
         <input type="text" class="form-control" name="courtName" placeholder="Enter Court name">
 
         <label for="inputCourtStatus">Status</label>
-            <select name="courtStatus" id="courtStatus" class="form-control" id="exampleFormControlSelect1">
+            <select name="courtStatus" id="courtStatus" class="form-control">
                 <option value="available">Available</option>
                 <option value="booked">Booked</option>
             </select><br>
