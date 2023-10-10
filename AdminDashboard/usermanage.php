@@ -236,7 +236,7 @@
                         echo '<td>' . ucfirst($row['userType']) . '</td>';
                         echo '<td>';
                         echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
-                        echo '<a href="confirm_delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
+                        echo '<a href="delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
                         echo '</td>';
                         echo '</tr>';
                     }
