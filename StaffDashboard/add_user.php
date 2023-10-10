@@ -76,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label for="userType">User Type</label>
                             <select class="form-control" id="userType" name="userType" required>
                                 <option value="customer">Customer</option>
-                                <option value="staff">Staff</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Add User</button>
