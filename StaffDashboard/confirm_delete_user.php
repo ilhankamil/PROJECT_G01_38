@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username'])) {
 
     if ($stmt->execute()) {
         echo "User deleted successfully.";
+                    header("Location: usermanage.php"); // Redirect back to the user management page
+
         // You can redirect the user to a different page after successful delete if needed
     } else {
         echo "Error deleting user.";
