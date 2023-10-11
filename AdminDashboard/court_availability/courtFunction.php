@@ -2,7 +2,7 @@
 
 //adding, done
 function addNewCourt(){
-$con = mysqli_connect("localhost", "root", "", "test");
+$con = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
 
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
@@ -24,7 +24,7 @@ else{
 
 
 function getCourtInformation($courtListQry){
-    $con = mysqli_connect("localhost", "root", "", "test");
+    $con = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
 
     if(!$con){
         die("Connection failed: " . mysqli_connect_error());
@@ -37,7 +37,7 @@ function getCourtInformation($courtListQry){
 }
 
 function getListOfCourt(){
-    $con = mysqli_connect("localhost", "root", "", "test");
+    $con = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
     if(!$con){
         die("Connection failed: " . mysqli_connect_error());
     }
@@ -49,7 +49,7 @@ function getListOfCourt(){
 }
 
 function deleteCourt(){
-    $con = mysqli_connect("localhost", "root", "", "test");
+    $con = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
     if(!$con){
         die("Connection failed: " . mysqli_connect_error());
     }
@@ -60,7 +60,7 @@ function deleteCourt(){
 }
 
 function updateCourt(){
-    $con = mysqli_connect("localhost", "root", "", "test");
+    $con = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
     if(!$con){
         die("Connection failed: " . mysqli_connect_error());
     }
