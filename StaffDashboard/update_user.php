@@ -11,18 +11,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['username']) && isset($
     // Check if the user is logged in and has appropriate privileges (e.g., admin)
     // You should implement your authentication and authorization logic here
 
-    // Update user information in the database
-    $sql = "UPDATE user SET username = :new_username, email = :new_email WHERE username = :username";
+    // Fetch the user's userType from the database
+    $sql = "SELECT userType FROM user WHERE username = :username";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':new_username', $newUsername, PDO::PARAM_STR);
-    $stmt->bindParam(':new_email', $newEmail, PDO::PARAM_STR);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($stmt->execute()) {
-        echo "User information updated successfully.";
-        // You can redirect the user to a different page after successful update if needed
+    if ($result) {
+        $userType = $result['userType'];
+
+        if ($userType === 'customer') {
+            // Update in the customer table
+            $updateCustomerSql = "UPDATE customer SET username = :new_username, email = :new_email WHERE username = :username";
+            $stmtCustomer = $pdo->prepare($updateCustomerSql);
+            $stmtCustomer->bindParam(':new_username', $newUsername, PDO::PARAM_STR);
+            $stmtCustomer->bindParam(':new_email', $newEmail, PDO::PARAM_STR);
+            $stmtCustomer->bindParam(':username', $username, PDO::PARAM_STR);
+            
+            if ($stmtCustomer->execute()) {
+                // Update in the common user table
+                $updateUserSql = "UPDATE user SET username = :new_username, email = :new_email WHERE username = :username";
+                $stmtUser = $pdo->prepare($updateUserSql);
+                $stmtUser->bindParam(':new_username', $newUsername, PDO::PARAM_STR);
+                $stmtUser->bindParam(':new_email', $newEmail, PDO::PARAM_STR);
+                $stmtUser->bindParam(':username', $username, PDO::PARAM_STR);
+
+                if ($stmtUser->execute()) {
+                    header("Location: usermanage.php"); // Redirect to the user management page
+                    exit;
+                } else {
+                    echo "Error updating user information.";
+                }
+            } else {
+                echo "Error updating customer information.";
+            }
+        } else {
+            echo "Invalid user type. Only customers can be updated.";
+        }
     } else {
-        echo "Error updating user information.";
+        echo "User not found.";
     }
 } else {
     echo "Invalid request.";

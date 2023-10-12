@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pro Badminton Centre - Staff Dashboard</title>
+    <title>Pro Badminton Centre - Court Rate</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -70,7 +70,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Staff Dashboard</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Court Rate</h1>
                     <!-- Rest of your content from rateList.php goes here -->
 
                     <?php
@@ -108,14 +108,14 @@ while($row = mysqli_fetch_assoc($courtRateListQry)) {
     echo '<td style="white-space: nowrap;">';
     echo '<form action="updateRate.php" method="POST">';
     echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToUpdate">';
-    echo '<input type="submit" value="Update" name="updateCourtRateButton" style="background-color:#577EFF; color: white;">';
+    echo '<button type="submit" name="updateCourtRateButton" class="btn btn-success">Update</button>';
     echo '</form>';
     echo '</td>';
     // Display delete form
     echo '<td style="white-space: nowrap;">';
     echo '<form action="rateProcess.php" method="POST">';
     echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToDelete">';
-    echo '<input type="submit" value="Delete" name="deleteCourtRateButton" style="background-color: #FF5757; color: white;">';
+    echo '<button type="submit" name="deleteCourtRateButton" class="btn btn-danger">Delete</button>';
     echo '</form>';
     echo '</td>';
     echo '</tr>';
@@ -136,7 +136,7 @@ echo '<br>';
 </script>
 
 <!-- Add button -->
-<button onclick="redirectToCourtRateForm()" style="">Add</button>
+<button onclick="redirectToCourtRateForm()" class="btn btn-primary">Add New</button>
 
 
 <?php
@@ -180,10 +180,6 @@ function addOption(){
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-
-</body>
-</html>
 
 </div>
 </body>

@@ -193,6 +193,26 @@
     </div>
 </li>
 
+ <!-- Delete User Confirmation Modal -->
+ <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete the user,  <span id="usernameToDelete"></span>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Confirm Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
                     </ul>
 
@@ -204,7 +224,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">User Management</h1>
-    <p class="mb-4">Manage customers and staff.</p>
+    <p class="mb-4">Manage customers and staff.</p>      
 
 <!-- User Management Table -->
 <div class="card shadow mb-4">
@@ -223,38 +243,126 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php
+                <?php
                     include('dbconnect.php');
                     // Retrieve and display all users (excluding admins) from the user table
                     $stmt = $pdo->prepare("SELECT username, email, userType FROM user WHERE userType != 'admin'");
                     $stmt->execute();
 
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo '<tr>';
-                        echo '<td>' . $row['username'] . '</td>';
-                        echo '<td>' . $row['email'] . '</td>';
-                        echo '<td>' . ucfirst($row['userType']) . '</td>';
-                        echo '<td>';
-                        echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
-                        echo '<a href="delete_user.php?username=' . $row['username'] . '" class="btn btn-danger btn-sm">Delete</a>';
-                        echo '</td>';
-                        echo '</tr>';
+                    echo '<tr>';
+                    echo '<td>' . $row['username'] . '</td>';
+                    echo '<td>' . $row['email'] . '</td>';
+                    echo '<td>' . ucfirst($row['userType']) . '</td>';
+                    echo '<td>';
+                    echo '<a href="edit_user.php?username=' . $row['username'] . '" class="btn btn-success btn-sm">Edit</a>';
+                    
+                    echo '<a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(\'' . $row['username'] . '\')">Delete</a>';
+                    echo '</td>';
+                    echo '</tr>';
                     }
                     ?>
+
                 </tbody>
             </table>
         </div>
     </div>
 </div>
 <!-- Add User Button -->
-<div class="text-right">
+<div class="text-left">
     <a href="add_user.php" class="btn btn-primary">Add User</a>
 </div>
 
+<script>
+        // JavaScript function to set the username and show the delete confirmation modal
+        function confirmDelete(username) {
+            // Set the username to be deleted in the modal
+            document.getElementById("usernameToDelete").textContent = username;
+
+            // Show the modal
+            $('#deleteConfirmationModal').modal('show');
+
+            // Handle the "Confirm Delete" button click
+            document.getElementById("confirmDeleteButton").onclick = function () {
+                // Redirect to the delete_user.php script for deletion
+                window.location = "delete_user.php";
+            };
+        }
+    </script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // JavaScript function to set the username and show the delete confirmation modal
+    function confirmDelete(username) {
+        // Set the username to be deleted in the modal
+        document.getElementById("usernameToDelete").textContent = username;
+
+        // Show the modal
+        $('#deleteConfirmationModal').modal('show');
+
+        // Handle the "Confirm Delete" button click
+        document.getElementById("confirmDeleteButton").onclick = function () {
+            // Send an AJAX request to delete_user.php
+            $.get("delete_user.php?username=" + username, function (data) {
+                if (data.success) {
+                    // User deleted successfully
+                    alert(data.message); // You can replace this with your preferred success message display method
+                    window.location.reload(); // Refresh the page or update the user list
+                } else {
+                    // Error deleting user
+                    alert(data.message); // You can replace this with your preferred error message display method
+                }
+            });
+        };
+    }
+</script>
 
 
 </div>
-<!-- End Page Content -->
+<!-- End Main Content -->
+
+
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+        <!-- Footer -->
+<footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Pro Badminton Centre</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="../webpage/index.php">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
