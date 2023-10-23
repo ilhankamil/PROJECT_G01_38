@@ -9,7 +9,7 @@ if (isset($_POST['submit'])) {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo 'Invalid email address. Please provide a valid email.';
     } else {
-        $to = 'ilhankmil@gmail.com';
+        $to = 'proonebadmintoncentre@gmail.com';
         $headers = 'From: ' . $email;
 
         if (mail($to, $subject, $message, $headers)) {
