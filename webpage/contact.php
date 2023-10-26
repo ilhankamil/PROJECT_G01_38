@@ -75,31 +75,25 @@
 
             <div class="col-lg-6 cl-md-6 mb-6 px-4">
                 <div class="bg-white rounded shadow p-4">
-                        <div class="col-lg-6 cl-md-6 mb-6 px-4">
-        <div class="bg-white rounded shadow p-4">
-<form method="post" action="send_email.php">
-    <h5>Send a message</h5>
-    <div class="mt-3">
-        <label class="form-label" style="font-weight: 500;">Name</label>
-        <input type="text" name="name" class="form-control shadow-none">
-    </div>
-    <div class="mt-3">
-        <label class="form-label" style="font-weight: 500;">Email</label>
-        <input type="email" name="email" class="form-control shadow-none">
-    </div>
-    <div class="mt-3">
-        <label class="form-label" style="font-weight: 500;">Subject</label>
-        <input type="text" name="subject" class="form-control shadow-none">
-    </div>
-    <div class="mt-3">
-        <label class="form-label" style="font-weight: 500;">Message</label>
-        <textarea name="message" class="form-control shadow-none" rows="5" style="resize:none;"></textarea>
-    </div>
-    <button type="submit" class="btn text-black mt-3" name="submit">SEND</button>
-</form>
-    </div>
-
-
+                        <h5>Inquiries :</h5>
+                        <form action="https://formsubmit.co/ilhankmil@gmail.com" method="POST">
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight: 500;">Name</label>
+                            <input type="text" name="name" class="form-control shadow-none" required>
+                        </div>
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight: 500;">Email</label>
+                            <input type="email" name="email" class="form-control shadow-none" required>
+                        </div>
+                        <div class="mt-3">
+                            <label class="form-label" style="font-weight: 500;">Message</label>
+                            <textarea name = "message" class="form-control shadow-none" rows="5" style="resize:none;" required></textarea>
+                        </div>
+                        <button type="submit" class="btn text-black mt-3">SEND</button>
+                        <!--fix the custom bg, button looked ugly af-->
+                    </form>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -120,6 +114,5 @@
     </div>
 
 <?php require('inc/footer.php') ?>
-
 </body>
 </html>
