@@ -115,7 +115,7 @@
     <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="../loginfunction/login.php" method="post"> <!-- Updated form element -->
+            <form action="../loginfunction/login.php" method="post" id="login_form"> <!-- Updated form element -->
                 <div class="modal-header">
                     <h5 class="modal-title d-flex align-items-center">
                         <i class="bi bi-person-circle fs-3 me-2"></i>User Login
@@ -241,7 +241,7 @@
 
 <script>
 $(document).ready(function () {
-    $("form").on("submit", function (e) {
+    $("#login_form").on("submit", function (e) {
         e.preventDefault(); // Prevent the default form submission
 
         // Serialize the form data
