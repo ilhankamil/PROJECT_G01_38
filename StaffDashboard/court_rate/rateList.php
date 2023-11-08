@@ -92,7 +92,7 @@ echo '<table class="custom-table">';
 echo '<tr>';
 echo '<th>No.</th>';
 echo '<th>Day of Week</th>';
-echo '<th>Rate (RM)</th>';
+echo '<th>Rate(RM)/Hour</th>';
 echo '<th>Update</th>';
 echo '<th>Delete</th>';
 echo '</tr>';
