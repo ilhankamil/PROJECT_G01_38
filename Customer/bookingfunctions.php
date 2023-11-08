@@ -30,7 +30,7 @@ function getListOfFutureBookingByCustomer($username) {
     
         // Get list of past bookings where the date is before or on the current date
         $currentDate = date("Y-m-d");
-        $sql = "SELECT * FROM booking WHERE name='$username' AND (date < '$currentDate' OR (date = '$currentDate' AND status = 'passed')) ORDER BY date";
+        $sql = "SELECT * FROM booking WHERE (name='$username' or email = '$username') AND (date < '$currentDate' OR (date = '$currentDate' AND status = 'passed')) ORDER BY date";
         $qry = mysqli_query($conn, $sql);
     
         if (!$qry) {
