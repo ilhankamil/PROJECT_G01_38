@@ -1,14 +1,18 @@
 <?php
-
 include "rateFunction.php";
 
+// Get the unique id to identify the record you want to update
+$idToUpdate = $_POST['idToUpdate'];
 
-    $dayOfWeek = $_POST['dayOfWeekToUpdate'];
+// Fetch the rate information based on the id
+$rateInfo = getCourtRate($idToUpdate);
 
-    
-    $rateInfo = getCourtRate($dayOfWeek);
+if ($rateInfo) {
     $rate = mysqli_fetch_assoc($rateInfo);
-
+} else {
+    // Handle the case where no data was found
+    echo "Record not found or an error occurred.";
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +26,16 @@ include "rateFunction.php";
         <h2 class="text-center">Update Court Rate</h2>
 
         <form action="rateProcess.php" method="POST" class="mt-4">
-            <input type="hidden" name="dayOfWeek" value="<?php echo $dayOfWeek; ?>">
+            <input type="hidden" name="idToUpdate" value="<?php echo $idToUpdate; ?>">
 
             <div class="form-group">
-                <label for="rate">Rate (RM):</label>
-                <input type="text" id="rate" name="rate" class="form-control" value="<?php echo $rate['rate']; ?>">
+                <label for="rate">Rate (RM)/ Per Hour:</label>
+                <input type="text" id="rateH" name="rateH" class="form-control" value="<?php echo ($rate ? $rate['price'] : ''); ?>">
+            </div>
+
+            <div class="form-group">
+                <label for "rate">Rate (RM)/ Per Minute:</label>
+                <input type="text" id="rateM" name="rateM" class="form-control" value="<?php echo ($rate ? $rate['price_minutes'] : ''); ?>">
             </div>
 
             <button type="submit" class="btn btn-primary" name="updateRateButton">Update Rate</button>

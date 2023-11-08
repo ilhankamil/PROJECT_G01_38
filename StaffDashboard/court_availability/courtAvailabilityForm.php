@@ -38,10 +38,16 @@
             background-color: #008000;
             border: none;
             border-radius: 4px;
-            padding: 10px 20px;
+            padding: 8px 18px;
         }
         .btn-success:hover {
             background-color: #006600;
+        }
+        .btn-secondary{
+            background-color: #808080;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 18px;
         }
     </style>
 </head>
@@ -54,32 +60,72 @@
             <form action="courtProcess.php" method="POST">
                 <div class="form-group">
                     <label for="inputCourtId">Court ID</label>
-                    <input type="text" id="courtid" name="courtid" placeholder="Enter Court ID" class="form-control">
+                    <select id="courtid" name="courtid" class="form-control">
+                    <option value="C1">C1</option>
+                    <option value="C2">C2</option>
+                    <option value="C3">C3</option>
+                    <option value="C4">C4</option>
+                    <option value="C5">C5</option>
+                    <option value="C6">C6</option>
+                    <option value="C7">C7</option>
+                    <option value="C8">C8</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="input Court Name">Court Name</label>
+                    <label for="inputCourtName">Court Name</label>
                     <input type="text" class="form-control" name="courtName" placeholder="Enter Court name">
                 </div>
 
                 <div class="form-group">
+                    <label for="inputName">Name</label>
+                    <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputDate">Date</label>
+                    <input type="date" class="form-control" name="date" placeholder="Enter Date">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputTime">Time</label>
+                    <input type="time" class="form-control" name="time" placeholder="Enter Time">
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEndTime">End Time</label>
+                    <input type="time" class= "form-control" name="end_time" placeholder="Enter End Time">
+                </div>
+
+                <div class="form-group">
                     <label for="inputCourtStatus">Status</label>
-                    <select name="courtStatus" id="courtStatus" class="form-control">
-                        <option value="available">Available</option>
+                    <select name="status" id="courtStatus" class="form-control">
                         <option value="booked">Booked</option>
+                        <option value="using">Using</option>
+                        <option value="expired">Expired</option>
                     </select><br>
                 </div>
 
-
                 <button type="submit" class="btn btn-success" name="addCourtButton">Add</button>
+                
+                <button type="button" class="btn btn-secondary" onclick="goBack()">Back</button>
             </form>
         </div>
     </div>
 
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    
 </body>
 </html>
-

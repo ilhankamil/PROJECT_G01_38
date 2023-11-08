@@ -101,9 +101,10 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Data:</h6>
-                    <a class="collapse-item" href="CourtBooking.php">Booked Courts</a>
+                        <a class="collapse-item" href="CourtBooking.php">Booked Courts</a>
                         <a class="collapse-item" href="usermanage.php">User Management</a>
                         <a class="collapse-item" href="court_rate/rateList.php">Court Rate</a>
+                        <a class="collapse-item" href="court_rateCust/rateList.php">Court Rate Customer</a>
                         <a class="collapse-item" href="court_availability/courtList.php">Court List</a>
                     </div>
                 </div>
@@ -362,6 +363,32 @@
         margin-right: 10px;
     }
 </style>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="../webpage/index.php">Logout</a>
+                    <!--href="login.html"-->
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
