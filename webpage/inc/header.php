@@ -13,7 +13,7 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand me-5 fw-bold fs-3 h-font text-success" href="index.php">Pro One Badminton Center</a>
+            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Pro One Badminton Center</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -36,8 +36,8 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <button type="button" class="btn btn-success shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                    <button type="button" class="btn btn-success shadow-none" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                    <button type="button" class="btn btn-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                    <button type="button" class="btn btn-dark shadow-none" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
                 </div>
             </div>
         </div>
@@ -77,11 +77,21 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control shadow-none input-box" name="passwordR">
+                                <div class="input-group">
+                                    <input type="password" class="form-control shadow-none " name="passwordR" id="passwordR">
+                                    <button class="input-group-text" type="button" id="togglePasswordR">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control shadow-none input-box" name="confirm_password">
+                                <div class="input-group">
+                                    <input type="password" class="form-control shadow-none input-box" name="confirm_password" id="confirm_password">
+                                    <button class="input-group-text" type="button" id="toggleConfirmPassword">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label class="form-label">&nbsp;</label>
@@ -110,7 +120,7 @@
 
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog custom-width">
         <div class="modal-content">
             <form action="../loginfunction/login.php" method="post" id="login_form">
                 <div class="modal-header">
@@ -125,12 +135,12 @@
                         <input type="text" class="form-control shadow-none" name="uname_or_email">
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
+                        <label class="form-label">Password</label>
                         <div class="input-group">
                             <input type="password" class="form-control shadow-none" id="password" name="password">
-                            <span class="input-group-text">
-                                <i class="bi bi-eye" id="togglePassword"></i>
-                            </span>
+                            <button class="input-group-text" type="button" id="togglePassword">
+                                <i class="bi bi-eye"></i>
+                            </button>
                         </div>
                     </div>
 
@@ -146,6 +156,13 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* Login Modal Adjustments */
+    .custom-width {
+    max-width: 600px; /* Adjust the width as needed */
+}
+</style>
 
 
 
@@ -268,19 +285,56 @@ $(document).ready(function () {
 </script>
 
 <script>
-$(document).ready(function () {
-    $("#togglePassword").on("click", function () {
-        const passwordField = $("#password");
+ $(document).ready(function () {
+        $("#togglePassword").on("click", function () {
+            const passwordField = $("#password");
+            const toggleButton = $(this);
 
-        // Toggle the input field type between password and text
-        if (passwordField.attr("type") === "password") {
-            passwordField.attr("type", "text");
-        } else {
-            passwordField.attr("type", "password");
-        }
+            // Toggle the input field type between password and text
+            if (passwordField.attr("type") === "password") {
+                passwordField.attr("type", "text");
+                toggleButton.addClass("toggle-button-active");
+            } else {
+                passwordField.attr("type", "password");
+                toggleButton.removeClass("toggle-button-active");
+            }
+        });
     });
-});
+
+$(document).ready(function () {
+        $("#togglePasswordR").on("click", function () {
+            const passwordField = $("#passwordR");
+            const toggleButton = $(this);
+
+            // Toggle the input field type between password and text
+            if (passwordField.attr("type") === "password") {
+                passwordField.attr("type", "text");
+                toggleButton.addClass("toggle-button-active");
+            } else {
+                passwordField.attr("type", "password");
+                toggleButton.removeClass("toggle-button-active");
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        $("#toggleConfirmPassword").on("click", function () {
+            const passwordField = $("#confirm_password");
+            const toggleButton = $(this);
+
+            // Toggle the input field type between password and text
+            if (passwordField.attr("type") === "password") {
+                passwordField.attr("type", "text");
+                toggleButton.addClass("toggle-button-active");
+            } else {
+                passwordField.attr("type", "password");
+                toggleButton.removeClass("toggle-button-active");
+            }
+        });
+    });
 </script>
+
+
 
 <style>
     .text-success {
@@ -295,4 +349,9 @@ $(document).ready(function () {
 .input-group input[type="password"] {
     border-right: none;
 }
+
+.toggle-button-active {
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    }
 </style>
+
