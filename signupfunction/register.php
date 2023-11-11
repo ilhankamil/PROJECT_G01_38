@@ -87,7 +87,7 @@ if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['phonenumbe
                         $mail->Host = 'smtp.gmail.com';
                         $mail->SMTPAuth = true;
                         $mail->Username = 'proonebcadm1n@gmail.com'; // Your Gmail email address
-                        $mail->Password = 'lkihubdgfynutkyw';  // Your Gmail password
+                        $mail->Password = 'gfzn bglt wyoh mgqx'; // 'lkihubdgfynutkyw' // Your Gmail password
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                         $mail->Port = 587; // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
                                           // For Gmail, should use port 587 with TLS encryption
