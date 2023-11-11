@@ -11,10 +11,13 @@ $password = "proadmin38"; // Change to your database password
 } catch (PDOException $e) {
     die("Database connection failed: " . $e->getMessage());
 } 
+?>
 
-/* $conn=mysqli_connect("localhost","proadmin38","proadmin38","proonebadmintoncentre");
+<?php
+$conn=mysqli_connect("localhost","proadmin38","proadmin38","proonebadmintoncentre");
 
 if(!$conn){
     die("Connection failed: " . mysqli_connect_error());
-} */
+} 
+
 ?>

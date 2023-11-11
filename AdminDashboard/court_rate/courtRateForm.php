@@ -50,14 +50,28 @@
             <h3>Add Court Rate</h3>
             <form action="rateProcess.php" method="POST">
                 <div class="form-group">
-                    <label for="dayOfWeek">Day of Week:</label>
+                    <label for="dayOfWeek">Day of Week(1,2,3,4,5,6,7):</label>
                     <input type="text" id="dayOfWeek" name="dayOfWeek" class="form-control">
                 </div>
-                
-              
+
                 <div class="form-group">
-                    <label for="rate">Rate (RM):</label>
-                    <input type="number" step="0.01" id="rate" name="rate" class="form-control">
+                    <label for="startTime">Start Time:</label>
+                    <input type="text" id="startTime" name="startTime" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="endTime">End Time:</label>
+                    <input type="text" id="endTime" name="endTime" class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <label for="priceHour">Price per Hour (RM):</label>
+                    <input type="number" step="0.01" id="priceHour" name="priceHour" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="priceMinutes">Price per Minute (RM):</label>
+                    <input type="number" step="0.01" id="priceMinutes" name="priceMinutes" class="form-control">
                 </div>
 
                 <button type="submit" class="btn btn-success" name="addCourtRateButton">Add</button>
@@ -71,9 +85,3 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
-
-
-
-

@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Pro Badminton Centre - Court Rate</title>
+    <title>Pro Badminton Centre - Admin Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -70,13 +70,13 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Court Rate</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Rate List</h1>
                     <!-- Rest of your content from rateList.php goes here -->
 
                     <?php
 include "rateFunction.php";
 
-echo '<div class="w3-container">';
+echo '<div>';
 
 if(isset($_POST['searchByDayButton'])){
     $dayOfWeek = $_POST['searchValue'];
@@ -92,33 +92,38 @@ echo '<table class="custom-table">';
 echo '<tr>';
 echo '<th>No.</th>';
 echo '<th>Day of Week</th>';
-echo '<th>Rate (RM)</th>';
+echo '<th>Start Time</th>';
+echo '<th>End Time</th>';
+echo '<th>Rate(RM)/Hour</th>';
+echo '<th>Rate(RM)/Minutes</th>';
 echo '<th>Update</th>';
 echo '<th>Delete</th>';
 echo '</tr>';
 
 $count = 1;
 while($row = mysqli_fetch_assoc($courtRateListQry)) {
-    $dayOfWeek = $row['dayOfWeek'];
+    $dayOfWeek = $row['day_of_week'];
     echo '<tr>';
     echo '<td>'.$count.'</td>';
     echo '<td>'.$dayOfWeek.'</td>';
-    echo '<td>'.$row['rate'].'</td>';
+    echo '<td>'.$row['start_time'].'</td>';
+    echo '<td>'.$row['end_time'].'</td>';
+    echo '<td>'.$row['price'].'</td>';
+    echo '<td>'.$row['price_minutes'].'</td>';
     // Update
-    echo '<td style="white-space: nowrap;">';
-    echo '<form action="updateRate.php" method="POST">';
-    echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToUpdate">';
-    echo '<button type="submit" name="updateCourtRateButton" class="btn btn-success">Update</button>';
-    echo '</form>';
-    echo '</td>';
+echo '<td style="white-space: nowrap;">';
+echo '<form action="updateRate.php" method="POST">';
+echo '<input type="hidden" value="'.$row['id'].'" name="idToUpdate">'; 
+echo '<button type="submit" name="updateCourtRateButton" class="btn btn-success">Update</button>';
+echo '</form>';
+echo '</td>';
     // Display delete form
-    echo '<td style="white-space: nowrap;">';
-    echo '<form action="rateProcess.php" method="POST">';
-    echo '<input type="hidden" value="'.$dayOfWeek.'" name="dayOfWeekToDelete">';
-    echo '<button type="submit" name="deleteCourtRateButton" class="btn btn-danger">Delete</button>';
-    echo '</form>';
-    echo '</td>';
-    echo '</tr>';
+echo '<td style="white-space: nowrap;">';
+echo '<form action="rateProcess.php" method="POST">';
+echo '<input type="hidden" value="'.$row['id'].'" name="idToDelete">';
+echo '<button type="submit" name="deleteCourtRateButton" class="btn btn-danger">Delete</button>';
+echo '</form>';
+echo '</td>';
     $count++;
 }
 
@@ -180,6 +185,10 @@ function addOption(){
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+
+</body>
+</html>
 
 </div>
 </body>
