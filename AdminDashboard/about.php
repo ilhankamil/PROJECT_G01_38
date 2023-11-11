@@ -215,9 +215,9 @@
             ?>
             <!-- Include the form from edit.php here -->
 <form method="POST" action="update.php">
-    <label for="newContent">New Content:</label><br>
-    <textarea id="newContent" name="newContent" rows="4" cols="50"></textarea><br><br>
-    <input type="submit" value="Save Changes">
+    <label for="newContent"> <b> New Content: <b> </label><br>
+    <textarea id="newContent" class="form-control" name="newContent" rows="4" cols="50"></textarea><br><br>
+    <input type="submit" class="btn btn-primary" value="Save Changes">
 </form>
 
         </div>
