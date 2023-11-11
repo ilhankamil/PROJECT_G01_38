@@ -36,3 +36,10 @@ input[type=number] {
     margin: 0 auto;
     height: 1.7px;
 }
+
+/* Add this to your existing CSS styles */
+.feature-title {
+    font-size: 1.5rem; /* Adjust the font size as needed */
+    font-family: 'Source Sans Pro', sans-serif; /* Specify Roboto as the font family */
+    color: var(--teal); /* Adjust the color as needed */
+}
