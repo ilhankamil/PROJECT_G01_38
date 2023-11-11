@@ -19,7 +19,7 @@
                 <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About us</a>
             </div>
             <div class="col-lg-4 p-4">
-                <h5 class="mb-3">Follow us</h5>
+                <h5 class="mb-3">Follow us</h5> 
                     <a href="#" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-facebook-fill"></i>Facebook
                     </a>
                     <br>
