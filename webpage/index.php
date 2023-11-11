@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, intial-scale=1.0">
     <title>Pro One Badminton Center</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/common.css">
     <?php require('inc/links.php'); ?>
     <style>
@@ -22,41 +24,69 @@
         }
 
     </style>
+     <style>
+        /* Carousel style */
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .swiper-slide img {
+            display:block;
+            width: 1470px;
+            height: 650px;
+            /*object-fit: cover;*/
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
 
 <?php require('inc/header.php');?>
      
-    <!--carousel-->
+<body class="bg-light">
+    <!-- Carousel -->
     <div class="container-fluid px-lg-4 mt-4">
-            <div class="swiper swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="images/carousel/index8.png"width=1500px, height=480px />
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index8.png" alt="Slide 1"  />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index3.png" alt="Slide 2" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index4.png" alt="Slide 3" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index5.png" alt="Slide 4" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index10.png" alt="Slide 5" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index7.png" alt="Slide 6" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="images/carousel/index1.png" alt="Slide 7" />
+                    </div>
+                    <!-- Add more slides as needed -->
                 </div>
-                <div class="swiper-slide">
-                    <img src="images/carousel/index3.png" width=1500px, height=480px/>
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/carousel/index4.png" width=1500px, height=480px />
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/carousel/index5.png"width=1500px, height=480px />
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/carousel/index10.png"width=1500px, height=480px />
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/carousel/index7.png"width=1500px, height=480px />
-                </div>
-
-                <div class="swiper-slide">
-                    <img src="images/carousel/index1.png" width=1500px, height=480px />
-                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         </div>
     </div>
@@ -209,13 +239,33 @@
 <br><br><br>
 <br><br><br>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-    var swiper = new Swiper(".swiper-container", {
-        spaceBetween: 30,
-        effect: "fade",
-      },
-    );
-  </script>
+  <!-- Include Bootstrap and Swiper JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+
+  
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop:"true",
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 4000, // 5 seconds
+            },
+        });
+    </script>
 </body>
 </html>
