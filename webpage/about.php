@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro One Badminton Center - ABOUT US</title>
+    <title>Pro One Badminton Centre - ABOUT US</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/common.css">
     <?php require('inc/links.php'); ?>
@@ -100,9 +100,9 @@
 <div class="container">
     <div class="row justify-content-between align-items-center">
         <<div class="col-lg-6 col-md-5 mb-4 order-lg-1 order-md-1 order-2">
-            <h3 class="mb-3">Welcome to Pro One Badminton Center</h3>
+            <h3 class="mb-3">Welcome to Pro One Badminton Centre</h3>
                 <p>
-                    At Pro One Badminton Center, our mission is to make the world of badminton accessible to everyone. 
+                    At Pro One Badminton Centre, our mission is to make the world of badminton accessible to everyone. 
                     We offer a state-of-the-art training ground where players of all levels can improve their skills and have a blast on the court. 
                     Located in the heart of Wangsa Maju, we cannot wait to welcome you and share the joy of badminton!
                 </p>

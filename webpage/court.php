@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro One Badminton Center - COURT</title>
+    <title>Pro One Badminton Centre - COURT</title>
     <link rel="stylesheet" href="css/common.css">
     <?php require('inc/links.php'); ?>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source%20Sans%20Pro:wght@400;700&display=swap">
@@ -56,7 +56,7 @@
     <div class="h-line bg-dark"></div>
     <p class="text-center mt-3">
         Step into a realm where passion meets play, and discover the extraordinary features that set our badminton center apart. 
-        <br>At "Pro One Badminton Center," we don't just offer courts; we provide an immersive experience designed to elevate your game and make every moment unforgettable.
+        <br>At "Pro One Badminton Centre," we don't just offer courts; we provide an immersive experience designed to elevate your game and make every moment unforgettable.
     </p>
 </div>
 

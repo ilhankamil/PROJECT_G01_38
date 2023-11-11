@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>Pro One Badminton Centre</title>
     <style>
         .nav-colour {
             color: #F1FFFA;
@@ -13,7 +14,7 @@
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Pro One Badminton Center</a>
+            <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Pro One Badminton Centre</a>
             <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -138,9 +139,9 @@
                         <label class="form-label">Password</label>
                         <div class="input-group">
                             <input type="password" class="form-control shadow-none" id="password" name="password">
-                            <button class="input-group-text" type="button" id="togglePassword">
+                            <span class="input-group-text"  id="togglePassword">
                                 <i class="bi bi-eye"></i>
-                            </button>
+                            </span>
                         </div>
                     </div>
 
@@ -249,9 +250,6 @@
 </script>
 
 <!-- Handling loginModal -->
-<!-- Include jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
 $(document).ready(function () {
     $("#login_form").on("submit", function (e) {
@@ -300,6 +298,9 @@ $(document).ready(function () {
             }
         });
     });
+</script>
+
+<script>
 
 $(document).ready(function () {
         $("#togglePasswordR").on("click", function () {

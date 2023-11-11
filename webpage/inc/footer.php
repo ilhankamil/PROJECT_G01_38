@@ -4,9 +4,9 @@
 <div class="container-fluid bg-white mt-5">
         <div class="row">
             <div class="col-lg-4 p-4">
-                <h3 class="hfont fw-bold fs-3 mb-2">Pro Badminton One Center</h3>
+                <h3 class="hfont fw-bold fs-3 mb-2">Pro Badminton One Centre</h3>
                 <p>
-                    Pro One Badminton Center is a place where badminton enthusiats can train their skills in badminton. Located in Wangsa Maju, this is a court where there are many conviences, ranging from quality courts to shops providing substances that can boost your badminton game. 
+                    Pro One Badminton Centre is a place where badminton enthusiats can train their skills in badminton. Located in Wangsa Maju, this is a court where there are many conviences, ranging from quality courts to shops providing substances that can boost your badminton game. 
                 </p>
             </div>
             <div class="col-lg-4 p-4">
