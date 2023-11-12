@@ -152,7 +152,7 @@
                             <li>Suitable place to play badminton</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-sm btn-dark shadow-none">More Details</a>
+                    <a href="court.php" class="btn btn-sm btn-dark shadow-none">More Details</a>
                 </div>
             </div>
         </div>
@@ -172,7 +172,7 @@
                             <li>Friendly Staff</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-sm btn-dark shadow-none">More Details</a>
+                    <a href="court.php" class="btn btn-sm btn-dark shadow-none">More Details</a>
                 </div>
             </div>
         </div>
@@ -192,7 +192,7 @@
                             <li>Quality Products for Body Needs</li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-sm btn-dark shadow-none">More Details</a>
+                    <a href="court.php" class="btn btn-sm btn-dark shadow-none">More Details</a>
                 </div>
             </div>
         </div>
