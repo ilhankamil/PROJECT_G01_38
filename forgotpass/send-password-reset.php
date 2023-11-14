@@ -30,11 +30,55 @@ if ($mysqli->affected_rows) {
     $mail->addAddress($email);
     $mail->Subject = "Password Reset";
     $mail->Body = <<<END
+        <html>
+            <head>
+                <style>
+                    body {
+                        font-family: 'Arial', sans-serif;
+                        line-height: 1.6;
+                        color: #333;
+                    }
 
-    Click <a href="http://localhost/PROJECT_G01_38/forgotpass/reset-password.php?token=$token">here</a> 
-    to reset your password.
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                    }
 
+                    .reset-link {
+                        display: inline-block;
+                        padding: 10px 20px;
+                        background-color: #007bff;
+                        color: #fff;
+                        text-decoration: none;
+                        border-radius: 5px;
+                    }
+
+                    .disclaimer {
+                        font-size: 12px;
+                        margin-top: 20px;
+                        color: #888;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h2>Password Reset</h2>
+                    <p>
+                        You've requested to reset your password. Click the link below to proceed with the reset:
+                    </p>
+                    <p>
+                        Click <a  href="http://localhost/PROJECT_G01_38/forgotpass/reset-password.php?token=$token">here</a> 
+                        to reset your password.
+                    </p>
+                    <p class="disclaimer">
+                        If you did not request a password reset, please ignore this email. 
+                    </p>
+                </div>
+            </body>
+        </html>
     END;
+
+    $mail->isHTML(true);
 
     try {
 
