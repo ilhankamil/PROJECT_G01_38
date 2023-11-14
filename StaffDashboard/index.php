@@ -199,20 +199,105 @@
                 <!-- End of Topbar -->
     
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-
-
-                    <!-- Begin Page Content -->
+               <!-- Begin Page Content -->
 <div class="container-fluid">
+    
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>
+    <h1 class="h3 mb-4 text-gray-800">Staff Dashboard</h1>
+    <div class="container">
+        <div class="row">
+            <!-- Components Grid -->
+            <div class="col-sm-4">
+                <div class="card border-left-primary shadow h-100 py">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    <!-- Content goes here -->
+                                    Total Booking (Day)
+                                </div>
+                                <!-- Include SaleReport.php within this card -->
+                                 <?php include 'SalesReport/totalBookings.php'; ?>
+                                <ul>
+                                <?php
+                                    foreach ($dailyBookingsData as $booking) {
+                                        echo '<div style=" padding: 10px; border-radius: 5px; margin-bottom: 10px;">';
+                                        echo '<span style="font-weight: bold; color: #007bff;">Day:</span> ' . $booking['date'] . '<br><br>';
+                                        echo '<span style="font-weight: bold; color: #007bff;">Total Bookings:</span> ' . $booking['total_bookings'];
+                                        echo '</div>';
+                                     }
+                                    ?>
+                                </ul>
+                                <!-- Additional content goes here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    
+            <!-- Additional columns can be added here 
+            <div class="col-sm">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            One of three columns
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            One of three columns
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> //additional </div> close for the row so just the delete the top one if want to use this
+        -->
+    </div>
+
+    <div class="row">
+        <!-- Components Grid -->
+        <div class="col-lg-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Revenue
+                            </div>
+                            <!-- Include SaleReport.php within this card -->
+                            <?php include 'SalesReport/SaleReport.php'; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <!-- Revenue Report Grid -->
+        <div class="col-lg-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Revenue Report
+                            </div>
+                            <!-- Include RevenueReport.html within this card -->
+                            <?php  include 'SalesReport/RevenueReport.html'; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Grids for Components and Utilities -->
     <div class="row">
-
  <!-- Components Grid -->
 <div class="col-lg-6 mb-4">
     <div class="card border-left-primary shadow h-100 py-2">
@@ -283,6 +368,7 @@
 
             </div>
             <!-- End of Main Content -->
+
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">

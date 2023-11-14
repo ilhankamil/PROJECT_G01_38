@@ -1,0 +1,43 @@
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <canvas id="revenueChart" width="800" height="400"></canvas>
+
+    <script>
+        // Fetch the revenue data from the PHP script
+        fetch('SalesReport/revenuefunction.php')
+            .then(response => response.json())
+            .then(data => {
+                // Extract the month and total revenue values from the data
+                const months = data.map(item => item.month);
+                const revenues = data.map(item => item.total_revenue);
+
+                // Create the bar chart using Chart.js
+                const ctx = document.getElementById('revenueChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: months,
+                        datasets: [{
+                            label: 'Monthly Revenue',
+                            data: revenues,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+
