@@ -11,16 +11,17 @@ function displayCourtAvailability($selectedDate) {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        echo "<h2>Court Availability for Date: $selectedDate</h2>";
-        echo "<table border='1'>";
-        echo "<tr>
-        <th>Court ID</th>
-        <th>Court Number</th>
-        <th>Start Time</th>
-        <th>End Time</th>
-        <th>Status</th>
-        
-        </tr>";
+        echo "<table class='table table-striped table-hover'>";
+echo "<thead>";
+echo "<tr>
+<th>Court ID</th>
+<th>Court Number</th>
+<th>Start Time</th>
+<th>End Time</th>
+<th>Status</th>
+</tr>";
+echo "</thead>";
+echo "<tbody>";
 
         while ($row = $result->fetch_assoc()) {
             echo "<tr>";

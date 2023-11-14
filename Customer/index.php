@@ -16,45 +16,7 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <style>
-        /* Style for the table container */
-        .table-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #f7f7f7;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            padding: 15px;
-            border: 1px solid #ddd;
-        }
-
-        /* Style for the table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        /* Style for table headers */
-        th {
-            background-color: #333;
-            color: #fff;
-            border: 1px solid #000;
-            padding: 10px;
-            text-align: center;
-        }
-
-        /* Style for table cells */
-        td {
-            text-align: center;
-            border: 1px solid #000;
-            padding: 10px;
-        }
-
-        /* Add some spacing for better readability */
-        .table-container h1 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-    </style>
+    
 </head>
 
 <body class="bg-light">
@@ -62,28 +24,60 @@
         <?php include "inc/header.php"; ?>
 
             <!-- Content Wrapper -->
-            <div id="content-wrapper" class="d-flex flex-column">
-            <!-- Main Content -->
-            <div id="content">
+<div id="content-wrapper" class="d-flex flex-column mt-3"> <!-- Adjusted margin-top here -->
+    <!-- Main Content -->
+    <div id="content">
+        <!-- Form to select a date -->
+        <form method="post" id="dateForm" class="form-inline">
+            <label for="date" class="d-flex flex-column mt-3">Select a Date to view court booked:  </label>
+            <input type="date" name="Cdate" id="Cdate" class="form-control mt-3" onchange="submitForm()">
+        </form>
 
-            <!-- Court availability for customer to view -->
-            <form method="post" id="dateForm">
-                <label for="date">Select Date: </label>
-                <input type="date" name="Cdate" id="Cdate" onchange="submitForm()">
-            </form>
+        <!-- Court Availability Table -->
+        <div id="courtAvailability" class="mt-3">
+            <!-- The court availability table will be displayed here -->
+        </div>
 
+<style>
+    #courtAvailability {
+        margin-top: 20px;
+    }
 
-            <div id="courtAvailability">
-                <!-- The court availability table will be displayed here -->
-            </div>
-            <!-- Court availability for customer to view ends here -->
+    #courtAvailability table {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
 
-            
+    #courtAvailability th,
+    #courtAvailability td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    #courtAvailability tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #courtAvailability th {
+        background-color: #000;
+        font-weight: bold;
+        color:#f2f2f2
+    }
+
+    #courtAvailability table caption {
+        caption-side: top;
+        text-align: center;
+        padding: 0.5em;
+    }
+
+</style>
 
 
             <!-- Begin Page Content -->
- 
-            <div class="court-container">
+            <div class="court-container mt-10">
+            <p>Please Select a Court to Start Booking</p>
                 <!-- Court Diagram -->
                 <div class="mb-3">
                     <table id="courtDiagram">
@@ -103,6 +97,7 @@
                                 echo '<input type="hidden" class="court-id" value="' . $courtID . '">';
                                 echo '<input type="hidden" class="court-name" value="' . $courtName . '">';
                                 echo $courtID; // You can customize how you want to display the court identifier
+                                
                                 echo '</td>';
                             }
                         }
@@ -475,27 +470,26 @@ document.getElementById("date").addEventListener("change", function() {
 
 </body>
 
-
-
-
 <style>
-    
-/* Style for the court container */
+        /* Style for the court container */
 .court-container {
-    position:static;
+    position: static;
     text-align: center;
-    margin: 0 auto;
-   
-    
+    margin: 5cm;
 }
 
 /* Style for the court diagram table */
 .court-container table {
     width: 1000px; /* Set the width to create a square */
+    height: 450px;
     margin: 0 auto; /* Center the container horizontally */
-    background-color: #f7f7f7; /* Background color for the shadow */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Add a shadow effect */
+    background-color: #ccc; /* Background color similar to the grid */
+    transition: background-color 0.3s; /* Add transition effect */
+    border-radius: 5px; /* Adds smooth edges */
     padding: 5px; /* Add padding for content */
+    text-align: center; /* Centers the content */
+    justify-content: center;
+    align-items: center;
     overflow-y: auto; /* Add vertical scroll if content overflows */
     border: 1px solid #000; /* Add a border around the container */
 }
@@ -508,31 +502,44 @@ document.getElementById("date").addEventListener("change", function() {
     padding: 8px; /* Add padding to header cells */
 }
 
+/* Style for court numbers */
+#courtDiagram td[data-name] {
+    padding:5px;
+    width: 150px;
+    height: 200px;
+    line-height: 30px;
+    background-color: #efefef; /* Background color similar to the grid */
+    transition: background-color 0.3s; /* Add transition effect */
+    border-radius: 5px; /* Adds smooth edges */
+    margin: 0.3rem;
+    cursor: pointer;
+    border: 3px solid transparent;
+    display: inline-block;
+    text-align: center; /* Centers the label */
+    justify-content: center;
+    align-items: center
+}
+
+/* Style for selected courts */
+#courtDiagram td[data-name].selected-court {
+    background-color: #4992FF; /* Blue background for selected courts */
+    color: #fff; /* White text for selected courts */
+}
+
+/* Hover effect for court numbers */
+#courtDiagram td[data-name]:hover {
+    background-color: #4992FF; /* Blue background on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* Style for the spacer */
+#courtDiagram td.spacer {
+    width: 20px; /* Adjust the width as needed */
+}
 
 
 
-        /* Style for court numbers */
-        #courtDiagram td[data-name] {
-            padding: 0.3rem;
-            width: 50px;
-            height: 45px;
-            text-align: center;
-            line-height: 30px;
-            background-color: #efefef;
-            border-radius: 5px;
-            margin: 0.3rem;
-            cursor: pointer;
-            border: 3px solid transparent;
-            display: inline-block;
-        }
-
-        /* Style for selected courts */
-        #courtDiagram td[data-name].selected-court {
-            background-color: #007bff; /* Blue background for selected courts */
-            color: #fff; /* White text for selected courts */
-        }
-
-       /* Style for the pop-out container */
+/* Style for the pop-out container */
 .pop-out-container {
     display: none;
     position: fixed;
@@ -600,6 +607,8 @@ document.getElementById("date").addEventListener("change", function() {
   opacity: 0.8;
 }
 
+
+        
     </style>
 
 </html>

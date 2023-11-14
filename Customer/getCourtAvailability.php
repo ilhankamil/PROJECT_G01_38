@@ -33,7 +33,7 @@ if ($jsonObj) {
         }
     } else {
         // If no data is available, you can echo an appropriate message as a table row
-        echo '<tr><td colspan="5">No availability data found.</td></tr>';
+        echo '<tr><td colspan="5">No Court Booked.</td></tr>';
     }
     
 } else {
