@@ -10,8 +10,25 @@ build/*
 # Ignore the /vendor/ directory for people using composer
 /vendor/
 
-# Ignore the /vendor/ directory for people using composer
-vendor/
+vendor/alchemy/
+	vendor/composer/installers/
+	vendor/dflydev/
+	vendor/doctrine/
+	vendor/drupal/
+	vendor/graham-campbell/
+	vendor/guzzlehttp/
+	vendor/nikic/
+	vendor/phpoption/
+	vendor/psr/
+	vendor/psy/
+	vendor/ralouphie/
+	vendor/stecman/
+	vendor/stripe/
+	vendor/symfony/
+	vendor/twig/
+	vendor/vlucas/
+	vendor/webflo/
+	vendor/webmozart/
 
 # If the vendor directory isn't being commited the composer.lock file should also be ignored
 composer.lock
