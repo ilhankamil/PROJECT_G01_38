@@ -210,8 +210,8 @@
                             // Output the form for editing
                             echo '<form method="POST" action="update_contact.php">';
                             echo '<br><label for="newContent">New Content:</label><br>';
-                            echo '<textarea id="newContent" name="newContent" rows="4" cols="50">' . htmlspecialchars($contactUsContent) . '</textarea><br><br>';
-                            echo '<input type="submit" value="Save Changes">';
+                                                       echo '<textarea id="newContent" class="form-control" name="newContent" rows="4" cols="50">' . htmlspecialchars($contactUsContent) . '</textarea><br><br>';
+                            echo '<input type="submit"  class="btn btn-primary" value="Save Changes">';
                             echo '</form>';
                         } else {
                             echo 'Contact Us content not found.';

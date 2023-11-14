@@ -59,9 +59,19 @@
     }
     .box {
         text-align: center;
-        padding: 20px;
+        padding: 50px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         border-top: 4px solid #2EC1AC;
+    }
+
+    .team-roles{
+        font-size: 0.8rem; /* Adjust the size as needed */
+        margin-top: 10px;
+    }
+
+    .leader-role{
+        font-size: 1rem; /* Adjust the size as needed */
+        margin-top: 10px;
     }
 </style>
 
@@ -76,7 +86,7 @@
     <h2 class="fw-bold h-font text-center">ABOUT US</h2>
     <div class="h-line bg-dark"></div>
     <p class="text-center mt-3">
-        <?php
+    <?php
         // Include your PHP database connection code here
         require('../webpage/inc/db_conn.php'); // Adjust the file path as needed
 
@@ -115,6 +125,8 @@
 
         <div class="col-lg-5 col-md-5 mb-4 order-lg-2 order-md-2 order-1">
             <img src="images\about\ilhan.jpg" class="w-75" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border: 1px solid #ccc; border-radius: 5px;">
+            <h5 class="mt-2 leader-role text-center">ILHAN KAMIL</h5>
+            <h5 class="mt-2 team-roles text-center">LEADER</h5>
         </div>
     </div>
 </div>
@@ -158,30 +170,35 @@
             <div class="swiper-slide bg-white text-center overflow-hidden rounded team-member">
                 <img src="images/about/ariff.jpg" class="team-member-image" alt="Ahmad Ariff Azahari">
                 <h5 class="mt-2 team-member-name">AHMAD ARIFF AZAHARI BIN MOHD AZHAR</h5>
+                <h5 class="mt-2 team-roles">DOCUMENT MAKER</h5>
             </div>
             
             <!-- abang raif -->
             <div class="swiper-slide bg-white text-center overflow-hidden rounded team-member">
                 <img src="images/about/raif.jpg" class="team-member-image" alt="Abang Raif Zakwan">
                 <h5 class="mt-2 team-member-name">ABANG RAIF ZAKWAN BIN ABANG RAZALI</h5>
+                <h5 class="mt-2 team-roles">LEAD DOCUMENT MAKER</h5>
             </div>
 
             <!-- faiq -->
             <div class="swiper-slide bg-white text-center overflow-hidden rounded team-member">
                 <img src="images/about/faiq.jpg" class="team-member-image" alt="Mohd Faiq Haziq Mohd Zamberi">
                 <h5 class="mt-2 team-member-name">MOHD FAIQ HAZIQ BIN MOHD ZAMBERI</h5>
+                <h5 class="mt-2 team-roles">DOCUMENT MAKER</h5>
             </div>
 
             <!-- david -->
             <div class="swiper-slide bg-white text-center overflow-hidden rounded team-member">
                 <img src="images/about/david.jpg" class="team-member-image" alt="David Goh Tong Wey">
                 <h5 class="mt-2 team-member-name">DAVID GOH TONG WEY</h5>
+                <h5 class="mt-2 team-roles">BACK-END PROGRAMMER</h5>
             </div>
 
             <!-- shamil -->
             <div class="swiper-slide bg-white text-center overflow-hidden rounded team-member">
                 <img src="images/about/shamil.jpg" class="team-member-image" alt="Muhammad Shamil Mohd Sabirin">
                 <h5 class="mt-2 team-member-name">MUHAMMAD SHAMIL BIN MOHD SABIRIN</h5>
+                <h5 class="mt-2 team-roles">FRONT-END PROGRAMMER</h5>
             </div>
         </div>
         <br>

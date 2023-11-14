@@ -197,12 +197,86 @@
 
                 </nav>
                 <!-- End of Topbar -->
+    
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Staff Dashboard</h1>
+
+
+                    <!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">Admin Dashboard</h1>
+
+    <!-- Grids for Components and Utilities -->
+    <div class="row">
+
+ <!-- Components Grid -->
+<div class="col-lg-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Components
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold">
+                        <a href="CourtBooking.php" class="text-gray-800">Booked Courts</a>
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold">
+                        <a href="usermanage.php" class="text-gray-800">User Management</a>
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold">
+                        <a href="court_rate/rateList.php" class="text-gray-800">Court Rate</a>
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold">
+                        <a href="court_rateCust/rateList.php" class="text-gray-800">Court Rate Customer</a>
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold">
+                        <a href="court_availability/courtList.php" class="text-gray-800">Court List</a>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-cogs fa-2x text-gray-300"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Utilities Grid -->
+        <div class="col-lg-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Utilities
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">
+                                <a href="contact.php" class="text-gray-800">Contact Us</a>
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold">
+                                <a href="about.php" class="text-gray-800">About Us</a>
+                            </div>
+                            <!-- Add other utilities as needed -->
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-wrench fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container-fluid -->
+
 
                 </div>
                 <!-- /.container-fluid -->
@@ -219,7 +293,6 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
 
         </div>
         <!-- End of Content Wrapper -->

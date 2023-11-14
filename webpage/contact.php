@@ -89,7 +89,7 @@
 
                     <!-- INQUIRIES -->
                     <h5 class="mb-3 fw-bold text-primary mt-4">Inquiries</h5>
-                    <form action="https://formsubmit.co/ilhankmil@gmail.com" method="POST">
+                    <form action="https://formsubmit.co/proonebcadm1n@gmail.com" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" id="name" name="name" class="form-control" required>
