@@ -4,10 +4,11 @@ include "dbconnect.php";
 
 $username = $_SESSION['uname_or_email'];
 
+
 if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
     // It's an email, so assign it to $email
     $email = $username;
-
+    
     /*
     print_r($_GET);
     echo "<br>"; */
@@ -108,12 +109,16 @@ if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
      $endTime = date('H:i:s', $endTimeStamp);
     // $endTime = adjustTime($endTimeStamp, $endTimeCo);
  
-     echo "End Time:".$endTime."<br>";
+     //echo "End Time:".$endTime."<br>";
 
     // Calculate the price based on the day of the week, time, and hours selected
     $price = calculatePrice($conn, $startTime, $endTime, $hours, $dayOfWeek);
 
 
+
+
+
+    
     /* Debugging output
     echo "<br>";
     echo "Day of the week: $dayOfWeek<br>";
@@ -126,9 +131,10 @@ if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
     echo "Court: $courtName<br>";
     echo "Calculated price: $price<br>"; */
 
+/*
     $conn = mysqli_connect("localhost", "proadmin38", "proadmin38", "proonebadmintoncentre");
 
-    $sql = "SELECT phonenumber FROM customer WHERE username = '" . $username . "'";
+    $sql = "SELECT phonenumber,email FROM customer WHERE username = '" . $username . "'";
     $result = mysqli_query($conn, $sql);
 
     if ($row = mysqli_fetch_array($result)) {
@@ -136,7 +142,7 @@ if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
     $emailUser = $row["email"];
         }
 
-        $sql = "INSERT INTO booking (booking_reference, name, email phonenumber, day, date, start_time, end_time, hours, courtName, price, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO booking (booking_reference, name, email, phonenumber, day, date, start_time, end_time, hours, courtName, price, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssssssssssss", $booking_reference, $username, $emailUser, $phonenumber, $dayName, $date, $startTime, $endTime, $hours, $courtName, $price, $status);
@@ -148,13 +154,13 @@ if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
     }else {
         echo "Error: " . $stmt->error;
         }
-
+ */
 }
 ?>
 
 
 <?php
-
+/*
 function generateUniqueID()
 {
     $timestamp = time();
@@ -193,7 +199,7 @@ function adjustTime($endTimeStamp, $endTimeCo) {
 
     return $adjustedTime;
 }
-*/
+
 
 function calculatePrice($conn, $startTime, $endTime, $hours, $dayOfWeek) {
     // Initialize the total price
@@ -231,4 +237,5 @@ function calculatePrice($conn, $startTime, $endTime, $hours, $dayOfWeek) {
 echo "Total Price:".$totalPrice;
     return $totalPrice;
 }
+*/
 ?>

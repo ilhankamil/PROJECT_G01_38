@@ -60,6 +60,7 @@ function getListOfFutureBookingByCustomer($username) {
                     <th>End Time</th>
                     <th>Price</th>
                     <th>Status</th>
+                    <th>Receipt</th>
                 </tr>
             </thead>';
             $i = 1;
@@ -74,12 +75,14 @@ function getListOfFutureBookingByCustomer($username) {
                 echo '<td>' . $row['end_time'] . '</td>';
                 echo '<td>' . 'RM '. $row['price'] . '</td>';
                 echo '<td>' . $row['status'] . '</td>';
+                echo '<td><a href="' . $row['receipt'] . '" download>Download</a></td>';
                 echo '</tr>';
                 $i++;
             }
     
             echo '</table>';
             echo '</div>';
+            
         }
     }
     

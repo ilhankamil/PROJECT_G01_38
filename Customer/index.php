@@ -72,81 +72,46 @@
                 <input type="date" name="Cdate" id="Cdate" onchange="submitForm()">
             </form>
 
+
             <div id="courtAvailability">
                 <!-- The court availability table will be displayed here -->
             </div>
             <!-- Court availability for customer to view ends here -->
 
-            <?php
-            include "dbconnect.php";
-            $sql = "SELECT * FROM court_rates";
-            $result = $conn->query($sql);
-
-            $courtRates = array();
-
-            if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $courtRates[] = $row;
-                }
-            }
-
-            ?>
-                <br>
+            
 
 
-                <!-- Begin Page Content -->
- <div class="container-fluid">
-        <div class="table-container">
-            <h1 class="h3 mb-4 text-gray-800">Court Rates</h1>
-            <!-- Display court rates in a table -->
-            <table>
-                <thead>
+            <!-- Begin Page Content -->
+ 
+            <div class="court-container">
+                <!-- Court Diagram -->
+                <div class="mb-3">
+                    <table id="courtDiagram">
                     <tr>
-                        <th>Time Slot</th>
-                        <th>Rate</th>
+                        <?php
+                        include "dbconnect.php"; // Include your database connection
+
+                        // Fetch court data from the database
+                        $sql = "SELECT * FROM court";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $courtID = $row['courtID'];
+                                $courtName = $row['courtName'];
+                                echo '<td data-name="' . $courtID . '">';
+                                echo '<input type="hidden" class="court-id" value="' . $courtID . '">';
+                                echo '<input type="hidden" class="court-name" value="' . $courtName . '">';
+                                echo $courtID; // You can customize how you want to display the court identifier
+                                echo '</td>';
+                            }
+                        }
+                        ?>
                     </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($courtRates as $rate) { ?>
-                        <tr>
-                            <td><?php echo $rate['dayOfWeek']; ?></td>
-                            <td><?php echo $rate['rate']; ?></td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-<br><br><br>
+                </table>
+                </div>
+            </div>
 
-<div class="court-container">
-    <!-- Court Diagram -->
-    <div class="mb-3">
-        <table id="courtDiagram">
-        <tr>
-            <?php
-            include "dbconnect.php"; // Include your database connection
-
-            // Fetch court data from the database
-            $sql = "SELECT * FROM court";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    $courtID = $row['courtID'];
-                    $courtName = $row['courtName'];
-                    echo '<td data-name="' . $courtID . '">';
-                    echo '<input type="hidden" class="court-id" value="' . $courtID . '">';
-                    echo '<input type="hidden" class="court-name" value="' . $courtName . '">';
-                    echo $courtID; // You can customize how you want to display the court identifier
-                    echo '</td>';
-                }
-            }
-            ?>
-        </tr>
-    </table>
-    </div>
-</div>
 
      <!-- Pop-out container -->
 <div id="popOutContainer" class="pop-out-container">
@@ -186,7 +151,7 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="displayCourtAvailability">
                     <!-- Availability data will be displayed here -->
                 </tbody>
             </table>
@@ -195,6 +160,27 @@
 </div>
 
     <script>
+    /*
+// Add an event listener to the page load event
+let count=0
+window.addEventListener('load', function() {
+    // Get the date element
+const dateElement = document.getElementById('Cdate');
+
+// Get the current date
+const currentDate = new Date();
+
+// Convert the current date to the required format
+const formattedDate = currentDate.toISOString().split('T')[0];
+
+  // Fill the date element value with the current date
+  dateElement.value = formattedDate;
+  if(count===0){
+    document.getElementById("dateForm").submit();
+    count++;
+  }
+});
+*/
 
 function submitForm() {
     $.ajax({
@@ -297,6 +283,7 @@ function getIfSelectedTimeIsTaken(callback) {
     });
 }
 
+/*
 function fetchCourtAvailability(courtID) {
     $.ajax({
         type: 'POST',
@@ -323,6 +310,37 @@ function fetchCourtAvailability(courtID) {
         }
     });
 }
+*/
+
+document.getElementById("date").addEventListener("change", function() {
+    // Get the selected date
+    const chosenDate = document.getElementById("date").value;
+    const courtID = document.getElementById("selectedCourtID").value;
+
+    // Prepare the data to be sent as JSON
+    const requestData = {
+        chosenDate: chosenDate,
+        courtID: courtID
+    };
+
+    // Send a POST request using fetch
+    fetch('getCourtAvailability.php', {
+        method: 'POST',
+        body: JSON.stringify(requestData),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then(response=>response.text())
+    .then(data => {
+       document.getElementById("displayCourtAvailability").insertAdjacentHTML(
+        "afterbegin",data
+        
+       );
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+});
 
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -353,8 +371,6 @@ function fetchCourtAvailability(courtID) {
         popOutContainer.style.display = "block";
 
         
-        // Fetch court availability when a court is selected
-        fetchCourtAvailability(courtID);
     }
 
    // Add click event listener to court numbers
@@ -368,6 +384,8 @@ function fetchCourtAvailability(courtID) {
     const closeButton = document.getElementById("closeButton");
     closeButton.addEventListener("click", function () {
         popOutContainer.style.display = "none";
+        document.getElementById("displayCourtAvailability").innerHTML="";
+        document.getElementById("date").value="";
     });
   
 
@@ -396,11 +414,38 @@ function fetchCourtAvailability(courtID) {
             const userInputTime = document.getElementById("time").value + ":00"; // Add ":00" for seconds
             const hours = document.getElementById("hours").value;
 
-            // Construct the URL for redirection
-            const redirectURL = `booked_court.php?courtID=${selectedCourtID}&courtName=${selectedCourtName}&date=${date}&time=${userInputTime}&hours=${hours}`;
+            // Define the endpoint URL
+            const endpointUrl = 'http://localhost:80/PROJECT_G01_38/Customer/PaymentFiles/checkout.php';
 
-                // Redirect to the constructed URL
-                window.location.href = redirectURL;
+            // Define the data to be sent in the POST request
+            const postData = {
+            selectedCourtID,selectedCourtName,date,userInputTime,hours
+            };
+
+
+            // Make the POST request using the Fetch API
+            fetch(endpointUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Adjust the content type based on your server's requirements
+            },
+            body: JSON.stringify(postData),
+            })
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json(); // Assuming the server returns JSON
+            })
+            .then(data => {
+                // Handle the response data
+                window.location.href="http://localhost:80/PROJECT_G01_38/Customer/PaymentFiles/Checkoutpage/checkout.html?client_secret="+data['clientSecret']
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the fetch
+                console.error('Fetch error:', error);
+            });
+
             }
         });
     });

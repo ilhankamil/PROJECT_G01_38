@@ -120,7 +120,7 @@ if (isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['phonenumbe
                         $result = mysqli_query($conn, $sql);
 
                         if ($result) {
-                            $response["success"] = "Your account has been created successfully";
+                            $response["success"] = "Your account has been created successfully. Please check your email to verify";
                         }
                     }
                 }

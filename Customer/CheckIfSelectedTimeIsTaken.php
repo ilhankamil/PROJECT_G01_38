@@ -27,7 +27,7 @@ echo "<br>date:",$dateInput;
 */
 
 // Query the database to check if the selected time is taken
-$sql = "SELECT date, time, end_time FROM court_availability WHERE courtID = ? AND date = ?";
+$sql = "SELECT date, start_time, end_time FROM booking WHERE courtID = ? AND date = ?";
 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("is", $courtID, $dateInput);
@@ -39,7 +39,7 @@ $isTaken = false;
 // Check if the selected time is within any booked time slots
 while ($row = $result->fetch_assoc()) {
     
-    $startTime = $row['time'];
+    $startTime = $row['start_time'];
    // $endTime = $row['end_time'];
 
     $endTime = date("H:i:s", strtotime($row['end_time'])); // Add 10 minutes tolerance if

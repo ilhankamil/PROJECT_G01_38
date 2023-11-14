@@ -35,6 +35,8 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 
                     // Store the email in the session
                     $_SESSION['uname_or_email'] = $row['email'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['username'] = $row['username'];
 
                     // Check if the user's email is verified and not in a "pending" state
                     if ($row['verified_email'] == "pending") {
@@ -77,6 +79,9 @@ if (isset($_POST['uname_or_email']) && isset($_POST['password'])) {
 
                     // Store the username in the session
                     $_SESSION['uname_or_email'] = $row['username'];
+                    $_SESSION['email'] = $row['email'];
+                    $_SESSION['username'] = $row['username'];
+                    
 
                     // Check if the user's email is verified and not in a "pending" state
                     if ($row['verified_email'] == "pending") {

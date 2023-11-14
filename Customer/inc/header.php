@@ -10,7 +10,7 @@
                     <a class="nav-link active me-2" aria-current="page" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link me-2" href="#">Court Rate</a>
+                    <a class="nav-link me-2" href="courtratepage.php">Court Rate</a>
                     </li>
                 </ul>
 
