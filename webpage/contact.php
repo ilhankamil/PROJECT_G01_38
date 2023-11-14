@@ -56,11 +56,6 @@
                         <i class="bi bi-telephone-fill me-2"></i>+60340238668
                     </a>
 
-                    <h5 class="mt-4 fw-bold">Email</h5>
-                    <a href="mailto:insertEmailhere@gmail.com" class="d-inline-block text-decoration-none text-dark fs-5 me-2">
-                        <i class="bi bi-envelope-at-fill me-2"></i>insertEmailhere@gmail.com
-                    </a>
-
                     <h5 class="mt-4 fw-bold">Follow Us</h5>
                     <a href="https://m.facebook.com/profile.php?id=207639219785814" class="d-inline-block text-decoration-none text-dark fs-5 me-2">
                         <i class="bi bi-facebook me-1"></i>Facebook
