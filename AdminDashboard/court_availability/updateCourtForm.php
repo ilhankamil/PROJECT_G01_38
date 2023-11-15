@@ -9,18 +9,23 @@
 include "courtFunction.php";
 
 $courtid = $_POST['courtIdToUpdate'];
+$courtReference = $_POST['courtReferenceToUpdate'];
 $courtQry = getCourtInformation($courtid);
 
 $courtInfo = mysqli_fetch_assoc($courtQry);
 $courtName = $courtInfo['courtName'];
 $date = $courtInfo['date'];
-$time = $courtInfo['time'];
+$time = $courtInfo['start_time'];
 $end_time = $courtInfo['end_time'];
 $courtStatus = $courtInfo['status'];
 ?>
 <div class="container mt-5">
     <h2 class="text-center">Update Court Information</h2>
     <form action="courtProcess.php" method="POST">
+    <div class="form-group">
+            <label for="updateCourtReference">Booking Reference</label>
+            <input type="text" class="form-control" name="courtReference" value="<?php echo $courtReference; ?>" readonly>
+        </div>
         <div class="form-group">
             <label for="updateCourtId">Court ID</label>
             <input type="text" class="form-control" name="courtid" value="<?php echo $courtid; ?>" readonly>
@@ -51,7 +56,7 @@ $courtStatus = $courtInfo['status'];
             <select name="courtStatus" id="courtStatus" class="form-control">
                 <option value="booked" <?php echo ($courtStatus == "booked") ? 'selected' : ''; ?>>booked</option>
                 <option value="using" <?php echo ($courtStatus == "using") ? 'selected' : ''; ?>>using</option>
-                <option value="expired" <?php echo ($courtStatus == "expired") ? 'selected' : ''; ?>>expired</option>
+                <option value="passed" <?php echo ($courtStatus == "passed") ? 'selected' : ''; ?>>passed</option>
             </select>
         </div>
 

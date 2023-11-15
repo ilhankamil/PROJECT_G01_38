@@ -94,7 +94,7 @@
 
                 <div class="form-group">
                     <label for="inputTime">Time</label>
-                    <input type="time" class="form-control" name="time" placeholder="Enter Time">
+                    <input type="time" class="form-control" name="start_time" placeholder="Enter Time">
                 </div>
 
                 <div class="form-group">
@@ -107,7 +107,7 @@
                     <select name="status" id="courtStatus" class="form-control">
                         <option value="booked">Booked</option>
                         <option value="using">Using</option>
-                        <option value="expired">Expired</option>
+                        <option value="passed">passed</option>
                     </select><br>
                 </div>
 

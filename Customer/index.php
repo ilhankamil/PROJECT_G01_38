@@ -233,7 +233,7 @@ function validateBookingHours() {
   alert(`End Time: ${endTime}`);  */
 
   if (selectedDateTime >= openingDateTime && endTime <= closingDateTime) {
-    alert("Booking hours are valid.");
+   // alert("Booking hours are valid.");
     return true;
   } else {
     alert("Booking hours exceed opening or closing time.");
@@ -387,7 +387,7 @@ document.getElementById("date").addEventListener("change", function() {
      // Add an event listener to the form
      const form = document.getElementById("bookingForm");
     form.addEventListener("submit", function (event) {
-        alert("Form submit event triggered");
+       // alert("Form submit event triggered");
         event.preventDefault(); // Prevent the default form submission
         // Validate the booking hours
     if (!validateBookingHours()) {
@@ -607,7 +607,46 @@ document.getElementById("date").addEventListener("change", function() {
   opacity: 0.8;
 }
 
+/* Style for selected courts */
+#courtDiagram td[data-name].selected-court {
+            background-color: #007bff; /* Blue background for selected courts */
+            color: #fff; /* White text for selected courts */
+        }
 
+
+ /* Style for the table container */
+ .table-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #f7f7f7;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        /* Style for the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        /* Style for table headers */
+        th {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: center;
+        }
+        /* Style for table cells */
+        td {
+            text-align: center;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+        /* Add some spacing for better readability */
+        .table-container h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
         
     </style>
 

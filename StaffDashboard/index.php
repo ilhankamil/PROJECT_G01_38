@@ -206,39 +206,8 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800">Staff Dashboard</h1>
     <div class="container">
-        <div class="row">
-            <!-- Components Grid -->
-            <div class="col-sm-4">
-                <div class="card border-left-primary shadow h-100 py">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    <!-- Content goes here -->
-                                    Total Booking (Day)
-                                </div>
-                                <!-- Include SaleReport.php within this card -->
-                                 <?php include 'SalesReport/totalBookings.php'; ?>
-                                <ul>
-                                <?php
-                                    foreach ($dailyBookingsData as $booking) {
-                                        echo '<div style=" padding: 10px; border-radius: 5px; margin-bottom: 10px;">';
-                                        echo '<span style="font-weight: bold; color: #007bff;">Day:</span> ' . $booking['date'] . '<br><br>';
-                                        echo '<span style="font-weight: bold; color: #007bff;">Total Bookings:</span> ' . $booking['total_bookings'];
-                                        echo '</div>';
-                                     }
-                                    ?>
-                                </ul>
-                                <!-- Additional content goes here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-    
-            <!-- Additional columns can be added here 
+       <!-- <div class="row">
+      Additional columns can be added here 
             <div class="col-sm">
                 <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
@@ -370,8 +339,16 @@
             <!-- End of Main Content -->
 
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+           
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+     <!-- Footer -->
+     <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Pro Badminton Centre</span>
@@ -379,12 +356,6 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">

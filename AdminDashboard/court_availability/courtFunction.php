@@ -11,11 +11,11 @@ function addNewCourt() {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $date = $_POST['date'];
-        $time = $_POST['time'];
+        $time = $_POST['start_time'];
         $end_time = $_POST['end_time'];
         $status = $_POST['status'];
 
-        $sql = "INSERT INTO court_availability (courtID, courtName, name, email, date, time, end_time, status)
+        $sql = "INSERT INTO booking (courtID, courtName, name, email, date, start_time, end_time, status)
         VALUES ('$courtid', '$courtName', '$name', '$email', '$date', '$time', '$end_time', '$status')";
 
         if (mysqli_query($con, $sql)) {
@@ -36,9 +36,9 @@ function getCourtInformation($courtListQry){
         die("Connection failed: " . mysqli_connect_error());
     }
     else{
-        $sql = "SELECT court_availability.*, court.courtID FROM court_availability
-        LEFT JOIN court ON court_availability.courtID = court.courtID
-        WHERE court_availability.courtID = '" . $courtListQry . "'";
+        $sql = "SELECT booking.*, court.courtID FROM booking
+        LEFT JOIN court ON booking.courtID = court.courtID
+        WHERE booking.courtID = '" . $courtListQry . "'";
         $qry = mysqli_query($con, $sql);
         return $qry;
     }
@@ -50,8 +50,9 @@ function getListOfCourt(){
         die("Connection failed: " . mysqli_connect_error());
     }
     else{
-        $sql = "SELECT court_availability.*, court.courtID FROM court_availability
-        LEFT JOIN court ON court_availability.courtID = court.courtID";
+        $sql = "SELECT booking.*, court.courtID FROM booking
+        LEFT JOIN court ON booking.courtID = court.courtID";
+
         $qry = mysqli_query($con, $sql);
         return $qry;
     }
@@ -63,14 +64,14 @@ function deleteCourt(){
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    // Get the courtID to delete from the POST data
-    $courtIDToDelete = $_POST['courtIdToDelete'];
+    // Get the booking reference to delete from the POST data
+    $bookingReferenceToDelete = $_POST['bookingReferenceToDelete'];
 
     // Use a prepared statement to prevent SQL injection
-    $sql = "DELETE FROM court_availability WHERE courtID=?";
+    $sql = "DELETE FROM booking WHERE booking_reference=?";
     
     $stmt = mysqli_prepare($con, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $courtIDToDelete);
+    mysqli_stmt_bind_param($stmt, "s", $bookingReferenceToDelete);
 
     // Execute the prepared statement
     if (mysqli_stmt_execute($stmt)) {
@@ -91,15 +92,16 @@ function updateCourt(){
         die("Connection failed: " . mysqli_connect_error());
     }
     else{
-        $courtid = $_POST['courtid'];
+        $bookingReference = $_POST['courtReference'];
+        $courtID = $_POST['courtid'];
         $courtName = $_POST['courtName'];
         $date = $_POST['date'];
         $time = $_POST['time'];
         $end_time = $_POST['end_time'];
         $courtStatus = $_POST['courtStatus'];
         
-        $sql = "UPDATE court_availability SET courtName='$courtName', date='$date', time='$time', end_time='$end_time', status='$courtStatus' WHERE courtID='$courtid'";
-        echo $sql;  // You can remove this line after testing
+        $sql = "UPDATE booking SET courtName='$courtName', date='$date', start_time='$time', end_time='$end_time', status='$courtStatus' WHERE booking_reference='$bookingReference' AND courtID='$courtID'";
+
 
         $qry = mysqli_query($con, $sql);
 

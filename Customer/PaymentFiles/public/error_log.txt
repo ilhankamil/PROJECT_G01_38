@@ -2359,3 +2359,291 @@
   string(99) "/v1/checkout/sessions/cs_test_a1GhuVkmPvKuc4YwtcK6O21fSIhBOWUtOczDWykpKmpNArLQzD06ngK6VO/line_items"
 }
 
+[2023-11-15 01:21:06] object(Stripe\Collection)#88 (4) {
+  ["object"]=>
+  string(4) "list"
+  ["data"]=>
+  array(1) {
+    [0]=>
+    object(Stripe\LineItem)#107 (10) {
+      ["id"]=>
+      string(27) "li_1OCWqcItcjCbiluxzsIaHXec"
+      ["object"]=>
+      string(4) "item"
+      ["amount_discount"]=>
+      int(0)
+      ["amount_subtotal"]=>
+      int(2000)
+      ["amount_tax"]=>
+      int(0)
+      ["amount_total"]=>
+      int(2000)
+      ["currency"]=>
+      string(3) "myr"
+      ["description"]=>
+      string(30) "Badminton Court booking at: C1"
+      ["price"]=>
+      object(Stripe\Price)#112 (19) {
+        ["id"]=>
+        string(30) "price_1OCWqcItcjCbiluxMkDmnmdN"
+        ["object"]=>
+        string(5) "price"
+        ["active"]=>
+        bool(false)
+        ["billing_scheme"]=>
+        string(8) "per_unit"
+        ["created"]=>
+        int(1700007650)
+        ["currency"]=>
+        string(3) "myr"
+        ["custom_unit_amount"]=>
+        NULL
+        ["livemode"]=>
+        bool(false)
+        ["lookup_key"]=>
+        NULL
+        ["metadata"]=>
+        object(Stripe\StripeObject)#117 (0) {
+        }
+        ["nickname"]=>
+        NULL
+        ["product"]=>
+        object(Stripe\Product)#118 (20) {
+          ["id"]=>
+          string(19) "prod_P0XwqsenNCRTDY"
+          ["object"]=>
+          string(7) "product"
+          ["active"]=>
+          bool(false)
+          ["attributes"]=>
+          array(0) {
+          }
+          ["created"]=>
+          int(1700007650)
+          ["default_price"]=>
+          NULL
+          ["description"]=>
+          NULL
+          ["features"]=>
+          array(0) {
+          }
+          ["images"]=>
+          array(0) {
+          }
+          ["livemode"]=>
+          bool(false)
+          ["metadata"]=>
+          object(Stripe\StripeObject)#126 (12) {
+            ["booking_reference"]=>
+            string(14) "17000076465500"
+            ["date"]=>
+            string(10) "2023-11-16"
+            ["dayName"]=>
+            string(8) "Thursday"
+            ["email"]=>
+            string(22) "davidgohtw98@gmail.com"
+            ["endTime"]=>
+            string(8) "12:20:00"
+            ["hours"]=>
+            string(1) "1"
+            ["price"]=>
+            string(2) "20"
+            ["selectedCourtId"]=>
+            string(2) "C1"
+            ["selectedCourtName"]=>
+            string(7) "Court 1"
+            ["startTime"]=>
+            string(8) "11:20:00"
+            ["status"]=>
+            string(6) "booked"
+            ["username"]=>
+            string(3) "ali"
+          }
+          ["name"]=>
+          string(30) "Badminton Court booking at: C1"
+          ["package_dimensions"]=>
+          NULL
+          ["shippable"]=>
+          NULL
+          ["statement_descriptor"]=>
+          NULL
+          ["tax_code"]=>
+          NULL
+          ["type"]=>
+          string(7) "service"
+          ["unit_label"]=>
+          NULL
+          ["updated"]=>
+          int(1700007650)
+          ["url"]=>
+          NULL
+        }
+        ["recurring"]=>
+        NULL
+        ["tax_behavior"]=>
+        string(11) "unspecified"
+        ["tiers_mode"]=>
+        NULL
+        ["transform_quantity"]=>
+        NULL
+        ["type"]=>
+        string(8) "one_time"
+        ["unit_amount"]=>
+        int(2000)
+        ["unit_amount_decimal"]=>
+        string(4) "2000"
+      }
+      ["quantity"]=>
+      int(1)
+    }
+  }
+  ["has_more"]=>
+  bool(false)
+  ["url"]=>
+  string(99) "/v1/checkout/sessions/cs_test_a1EeuDhjrEJcnZbjfDlsuTyXOWJFyjUzD55OLTaGd6MjfBr7TH7llQVtX0/line_items"
+}
+
+[2023-11-15 02:23:46] object(Stripe\Collection)#88 (4) {
+  ["object"]=>
+  string(4) "list"
+  ["data"]=>
+  array(1) {
+    [0]=>
+    object(Stripe\LineItem)#107 (10) {
+      ["id"]=>
+      string(27) "li_1OCXpIItcjCbiluxYoLTfQGa"
+      ["object"]=>
+      string(4) "item"
+      ["amount_discount"]=>
+      int(0)
+      ["amount_subtotal"]=>
+      int(2000)
+      ["amount_tax"]=>
+      int(0)
+      ["amount_total"]=>
+      int(2000)
+      ["currency"]=>
+      string(3) "myr"
+      ["description"]=>
+      string(30) "Badminton Court booking at: C1"
+      ["price"]=>
+      object(Stripe\Price)#112 (19) {
+        ["id"]=>
+        string(30) "price_1OCXpIItcjCbiluxQeJYeeB4"
+        ["object"]=>
+        string(5) "price"
+        ["active"]=>
+        bool(false)
+        ["billing_scheme"]=>
+        string(8) "per_unit"
+        ["created"]=>
+        int(1700011412)
+        ["currency"]=>
+        string(3) "myr"
+        ["custom_unit_amount"]=>
+        NULL
+        ["livemode"]=>
+        bool(false)
+        ["lookup_key"]=>
+        NULL
+        ["metadata"]=>
+        object(Stripe\StripeObject)#117 (0) {
+        }
+        ["nickname"]=>
+        NULL
+        ["product"]=>
+        object(Stripe\Product)#118 (20) {
+          ["id"]=>
+          string(19) "prod_P0Yx4OozemoCzx"
+          ["object"]=>
+          string(7) "product"
+          ["active"]=>
+          bool(false)
+          ["attributes"]=>
+          array(0) {
+          }
+          ["created"]=>
+          int(1700011412)
+          ["default_price"]=>
+          NULL
+          ["description"]=>
+          NULL
+          ["features"]=>
+          array(0) {
+          }
+          ["images"]=>
+          array(0) {
+          }
+          ["livemode"]=>
+          bool(false)
+          ["metadata"]=>
+          object(Stripe\StripeObject)#126 (12) {
+            ["booking_reference"]=>
+            string(14) "17000114082713"
+            ["date"]=>
+            string(10) "2023-11-15"
+            ["dayName"]=>
+            string(9) "Wednesday"
+            ["email"]=>
+            string(20) "davidgohtw@gmail.com"
+            ["endTime"]=>
+            string(8) "11:00:00"
+            ["hours"]=>
+            string(1) "1"
+            ["price"]=>
+            string(2) "20"
+            ["selectedCourtId"]=>
+            string(2) "C1"
+            ["selectedCourtName"]=>
+            string(7) "Court 1"
+            ["startTime"]=>
+            string(8) "10:00:00"
+            ["status"]=>
+            string(6) "booked"
+            ["username"]=>
+            string(6) "DavidG"
+          }
+          ["name"]=>
+          string(30) "Badminton Court booking at: C1"
+          ["package_dimensions"]=>
+          NULL
+          ["shippable"]=>
+          NULL
+          ["statement_descriptor"]=>
+          NULL
+          ["tax_code"]=>
+          NULL
+          ["type"]=>
+          string(7) "service"
+          ["unit_label"]=>
+          NULL
+          ["updated"]=>
+          int(1700011412)
+          ["url"]=>
+          NULL
+        }
+        ["recurring"]=>
+        NULL
+        ["tax_behavior"]=>
+        string(11) "unspecified"
+        ["tiers_mode"]=>
+        NULL
+        ["transform_quantity"]=>
+        NULL
+        ["type"]=>
+        string(8) "one_time"
+        ["unit_amount"]=>
+        int(2000)
+        ["unit_amount_decimal"]=>
+        string(4) "2000"
+      }
+      ["quantity"]=>
+      int(1)
+    }
+  }
+  ["has_more"]=>
+  bool(false)
+  ["url"]=>
+  string(99) "/v1/checkout/sessions/cs_test_a1FLthJBaTvzlkiJNvw4Y7xycgGt2aTsT31BA7PMpzi8TQ2SbZxyMtucse/line_items"
+}
+

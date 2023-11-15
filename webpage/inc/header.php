@@ -26,9 +26,7 @@
                     <li class="nav-item">
                         <a class="nav-link nav-colour me-2" href="court.php">Court</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-colour me-2" href="#">Book</a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link nav-colour me-2" href="contact.php">Contact Us</a>
                     </li>
