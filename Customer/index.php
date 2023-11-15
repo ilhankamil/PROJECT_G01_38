@@ -233,7 +233,7 @@ function validateBookingHours() {
   alert(`End Time: ${endTime}`);  */
 
   if (selectedDateTime >= openingDateTime && endTime <= closingDateTime) {
-   // alert("Booking hours are valid.");
+    alert("Booking hours are valid.");
     return true;
   } else {
     alert("Booking hours exceed opening or closing time.");
@@ -272,9 +272,7 @@ function getIfSelectedTimeIsTaken(callback) {
                 callback(false);
             }
         },
-        error: function () {
-            alert('Failed to check selected time.');
-        }
+        
     });
 }
 
@@ -387,7 +385,7 @@ document.getElementById("date").addEventListener("change", function() {
      // Add an event listener to the form
      const form = document.getElementById("bookingForm");
     form.addEventListener("submit", function (event) {
-       // alert("Form submit event triggered");
+        alert("Form submit event triggered");
         event.preventDefault(); // Prevent the default form submission
         // Validate the booking hours
     if (!validateBookingHours()) {
@@ -615,7 +613,7 @@ document.getElementById("date").addEventListener("change", function() {
 
 
  /* Style for the table container */
- .table-container {
+        .table-container {
             max-width: 800px;
             margin: 0 auto;
             background-color: #f7f7f7;

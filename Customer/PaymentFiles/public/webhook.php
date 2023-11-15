@@ -138,7 +138,8 @@ if ($event->type == 'checkout.session.completed') {
 http_response_code(200);
 
 function logError($message) {
-  $logFile = __DIR__ . '/error_log.txt';
+ // $logFile = __DIR__ . '/error_log.txt'; if got error then uncomment this
+  $logFile = __DIR__ . '';
   error_log(date('[Y-m-d H:i:s]') . ' ' . $message . PHP_EOL, 3, $logFile);
 }
 ?>
