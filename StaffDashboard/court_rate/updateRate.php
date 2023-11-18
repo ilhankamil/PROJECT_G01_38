@@ -29,13 +29,13 @@ if ($rateInfo) {
             <input type="hidden" name="idToUpdate" value="<?php echo $idToUpdate; ?>">
 
             <div class="form-group">
-                <label for="rate">Rate (RM)/ Per Hour:</label>
-                <input type="text" id="rateH" name="rateH" class="form-control" value="<?php echo ($rate ? $rate['price'] : ''); ?>">
+                <label for="rateH">Rate (RM)/ Per Hour:</label>
+                <input type="text" id="rateH" name="rateH" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for "rate">Rate (RM)/ Per Minute:</label>
-                <input type="text" id="rateM" name="rateM" class="form-control" value="<?php echo ($rate ? $rate['price_minutes'] : ''); ?>">
+                <label for="rateM">Rate (RM)/ Per Minute:</label>
+                <input type="text" id="rateM" name="rateM" class="form-control">
             </div>
 
             <button type="submit" class="btn btn-primary" name="updateRateButton">Update Rate</button>

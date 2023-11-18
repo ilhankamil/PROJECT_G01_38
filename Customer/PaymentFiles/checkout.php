@@ -133,7 +133,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
           ],
           'quantity' => 1,
       ]],
-      'payment_method_types' => ['fpx'],
+      'payment_method_types' => ['card'],
       'mode' => 'payment',
       'invoice_creation' => ['enabled' => true],
       'return_url' => $YOUR_DOMAIN . '/PROJECT_G01_38/Customer/PaymentFiles/Checkoutpage/return.html?session_id={CHECKOUT_SESSION_ID}',
