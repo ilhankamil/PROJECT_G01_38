@@ -21,7 +21,11 @@ SET time_zone = "+00:00";
 -- Database: `proonebadmintoncentre`
 --
 
--- --------------------------------------------------------
+-- Create the database if not exists
+CREATE DATABASE IF NOT EXISTS `proonebadmintoncentre`;
+
+-- Switch to the newly created database
+USE `proonebadmintoncentre`;
 
 --
 -- Table structure for table `about_us_content`
