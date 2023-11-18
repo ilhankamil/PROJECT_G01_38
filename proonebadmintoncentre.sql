@@ -37,7 +37,7 @@ CREATE TABLE `about_us_content` (
 --
 
 INSERT INTO `about_us_content` (`id`, `content`) VALUES
-(1, 'Pro One Badminton Centre is your ultimate destination for all things badminton. From beginners to seasoned players, we offer a welcoming environment, top-notch facilities, and expert coaching. Join our vibrant badminton community and pursue your dreams with us. We\'re dedicated to promoting the sport we love. Welcome to excellence at Pro One Badminton Centre!');
+(1, 'Pro One Badminton Centre is your ultimate destination for all things badminton. From beginners to seasoned players, we offer a welcoming environment, top-notch facilities, and expert coaching. Join our vibrant badminton community and pursue your dreams with us. We are dedicated to promoting the sport we love. Welcome to excellence at Pro One Badminton Centre!');
 
 -- --------------------------------------------------------
 
