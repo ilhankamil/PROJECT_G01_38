@@ -1,0 +1,6 @@
+1) DOWNLOAD XAMPP SERVER
+link: https://www.apachefriends.org/download.html
+
+2) DOWNLOAD VISUAL STUDIO CODE
+link: https://code.visualstudio.com/
+

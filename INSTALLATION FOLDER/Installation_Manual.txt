@@ -1,0 +1,11 @@
+INSTALLATION MANUAL
+----------------------------------------------------------------------------------------------
+SETTING UP SERVER
+Start up XAMPP, and click "Start" button for MySQL
+Insert the files into the location of the XAMPP folder, inside a file called "htdocs".
+(EXAMPLE: C:\xampp\htdocs)
+Go on browser, type in the URL browser: http://localhost/PROJECT_G01_38/webpage/index.php
+Click on any buttons on the website.
+ ----------------------------------------------------------------------------------------------
+LINK FOR GITHUB SOURCE CODES 
+https://github.com/ilhankamil/PROJECT_G01_38/tree/main/AdminDashboard
